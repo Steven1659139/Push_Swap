@@ -75,31 +75,52 @@ t_intlist *convert_sep(char **input)
 
 }
 
-int	check_input(char *input)
+int	check_input(char **input)
 {
 	int i;
+	int	j;
 
 	i = 0;
-	while (i < ft_strlen(input))
+	j = 0;
+	//printf("string = %s\n", input[j]);
+	//j++;
+	//printf("string = %s\n", input[j]);
+	//printf("char = %c\n", *input[i]);
+	while (input[j] != NULL)
 	{
-		if (ft_isalpha(input[i++]))
-			return (0);
+		//printf("string = %s\n", input[j]);
+		//printf("len = %d\n", (int)ft_strlen(input[j]));
+		while (i < ft_strlen(input[j]))
+		{
+			//printf("char = %c\n", input[j][i]);
+			if ((!ft_isdigit(input[j][i]) && !(' ' == input[j][i])))
+				return (0);
+			i++;
+		}
+		j++;
+		i = 0;
 	}
 	return (1);
 }
 
 int main(int argc, char **argv)
 {
-	if (argc > 1)
+	argv++;
+	printf("Output_check = %d\n", check_input(argv));
+	if (argc > 1 && check_input(argv))
 	{
-		argv++;
-		if (argc == 2 && (check_input(*argv)))
 		{
-			//ft_putstr_fd(GREEN"Input OK",1);
-			convert(*argv);
+			if (argc == 2)
+			{
+				printf("%s", "Arg == 2\n");
+				convert(*argv);
+			}
+			else
+			{
+				printf("%s", "Arg + 2\n");
+				convert_sep(argv);
+			}
 		}
-		else
-			convert_sep(argv);
 	}
 	else
 		ft_putstr_fd(RED"Error\n", 2);
