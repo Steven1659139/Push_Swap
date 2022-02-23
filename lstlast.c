@@ -1,6 +1,6 @@
 #include "Push_swap.h"
 
-t_intlist	*lstlast(t_intlist *lst)
+t_list_dbl	*lstlast(t_list_dbl *lst)
 {
 	if (!lst)
 		return (0);

@@ -13,60 +13,82 @@
 #include "Push_swap.h"
 #include <stdio.h>
 
-void	ft_lstprint(t_intlist **first)
+void ra(t_list_dbl *list)
 {
-	t_intlist *ptr;
+	int i;
+
+	i = 3;
+	while (i != 0)
+	{
+		i--;
+
+		printf("%d", list->content);
+		list = list->next;
+	}
+}
+
+void	ft_lstprint(t_list_dbl **first)
+{
+	t_list_dbl *ptr;
 
 	ptr = *first;
 	while(ptr->next != NULL)
 	{	
-		printf("%d\n", ptr->content);
+		printf("%d -> ", ptr->content);
 		ptr = ptr->next;
 	}
-	printf("%d\n", ptr->content);
+	printf("%d -> \n", ptr->content);
+	while(ptr->prev != NULL)
+	{
+		printf("%d -> ", ptr->content);
+		ptr = ptr->prev;
+	}
+	printf("%d -> ", ptr->content);
 }
 
-t_intlist	*convert(char *input)
+t_list_dbl	*convert(char *input)
 {
 	char **tab;
-	t_intlist *int_list;
+	t_list_dbl *int_list;
 	int inter;
 	int i;
 
 	i = 0;
 	tab = ft_split(input, ' ');
 	inter = ft_atoi(tab[i]);
-	int_list = lstnew_int(inter);
+	int_list = lstnew_dbl(inter);
 
 	//printf("%d\n", (int)int_list->next->content);
-	printf("%d\n", (int)int_list->content);
+	//printf("%d\n", (int)int_list->content);
 	while (tab[++i] != NULL)
 	{
 		inter = ft_atoi(tab[i]);
-		printf("%d\n", inter);
-		lst_addback(&int_list, lstnew_int(inter));
+		//printf("%d\n", inter);
+		lst_addback(&int_list, lstnew_dbl(inter));
 	}
 	ft_lstprint(&int_list);
+	//ra(int_list);
+	//ft_lstprint(&int_list);
 	return (int_list);
 }
 
-t_intlist *convert_sep(char **input)
+t_list_dbl *convert_sep(char **input)
 {
 	int i;
 	int inter;
 
 
-	t_intlist *int_list;
+	t_list_dbl *int_list;
 
 	i = 0;
 
 	inter = ft_atoi(input[i]);
-	int_list = lstnew_int(inter);
+	int_list = lstnew_dbl(inter);
 
 	while (input[++i] != NULL)
 	{
 		inter = ft_atoi(input[i]);
-		lst_addback(&int_list, lstnew_int(inter));
+		lst_addback(&int_list, lstnew_dbl(inter));
 		//printf("%s\n", input[i]);
 	}
 	ft_lstprint(&int_list);

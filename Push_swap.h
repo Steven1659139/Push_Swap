@@ -17,14 +17,15 @@
 typedef struct s_intlist
 {
 	int			content;
-	struct s_intlist	*next;
-}					t_intlist;
+	struct s_list_dbl	*next;
+	struct s_list_dbl	*prev;
+}					t_list_dbl;
 
 #include "Libft/libft.h"
 
-t_intlist	*lstnew_int(int content);
-t_intlist	*lstlast(t_intlist *lst);
-void	lst_addback(t_intlist **alst, t_intlist *new);
+t_list_dbl	*lstnew_dbl(int content);
+t_list_dbl	*lstlast(t_list_dbl *lst);
+void	lst_addback(t_list_dbl **alst, t_list_dbl *new);
 
 
 #endif
