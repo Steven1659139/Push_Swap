@@ -39,13 +39,14 @@ t_intlist	*convert(char *input)
 	int_list = lstnew_int(inter);
 
 	//printf("%d\n", (int)int_list->next->content);
-	printf("%d\n", (int)int_list->content);
+	//printf("%d\n", (int)int_list->content);
 	while (tab[++i] != NULL)
 	{
 		inter = ft_atoi(tab[i]);
-		printf("%d\n", inter);
+		//printf("%d\n", inter);
 		lst_addback(&int_list, lstnew_int(inter));
 	}
+	free(tab);
 	ft_lstprint(&int_list);
 	return (int_list);
 }
@@ -106,7 +107,7 @@ int	check_input(char **input)
 int main(int argc, char **argv)
 {
 	argv++;
-	printf("Output_check = %d\n", check_input(argv));
+	//printf("Output_check = %d\n", check_input(argv));
 	if (argc > 1 && check_input(argv))
 	{
 		{
