@@ -66,6 +66,7 @@ t_list_dbl	*convert(char *input)
 		//printf("%d\n", inter);
 		lst_addback(&int_list, lstnew_dbl(inter));
 	}
+	free(tab);
 	ft_lstprint(&int_list);
 	//ra(int_list);
 	//ft_lstprint(&int_list);
@@ -128,7 +129,7 @@ int	check_input(char **input)
 int main(int argc, char **argv)
 {
 	argv++;
-	printf("Output_check = %d\n", check_input(argv));
+	//printf("Output_check = %d\n", check_input(argv));
 	if (argc > 1 && check_input(argv))
 	{
 		{
