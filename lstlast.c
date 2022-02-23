@@ -1,10 +1,18 @@
 #include "Push_swap.h"
 
-t_list_dbl	*lstlast(t_list_dbl *lst)
+/* modifier nom et replacer dans la libft */
+
+t_dlist	*lstlast(t_dlist **first, t_dlist *lst)
 {
+	t_dlist	*ptr_first;
+
+	ptr_first = *first;
 	if (!lst)
 		return (0);
-	while (lst -> next)
+	if (lst -> next == NULL)
+		return (lst);
+
+	while (lst -> next != ptr_first)
 	{
 		lst = lst -> next;
 	}

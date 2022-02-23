@@ -14,18 +14,24 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-typedef struct s_intlist
+/* 
+- len
+- position, set_first set_last
+*/
+
+typedef struct s_dlist
 {
 	int			content;
-	struct s_list_dbl	*next;
-	struct s_list_dbl	*prev;
-}					t_list_dbl;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}					t_dlist;
 
 #include "Libft/libft.h"
+#include <stdio.h>
 
-t_list_dbl	*lstnew_dbl(int content);
-t_list_dbl	*lstlast(t_list_dbl *lst);
-void	lst_addback(t_list_dbl **alst, t_list_dbl *new);
+t_dlist	*lstnew_dbl(int content);
+t_dlist	*lstlast(t_dlist **first, t_dlist *lst);
+void	lst_addback(t_dlist **alst, t_dlist *new);
 
 
 #endif
