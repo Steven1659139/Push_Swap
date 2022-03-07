@@ -13,11 +13,31 @@
 #include "Push_swap.h"
 #include <stdio.h>
 
-
-
-void ra(t_dlist **first)
+int twin_checker(t_dlist **lst)
 {
-	lst_addback(first, *first);
+	t_dlist *ptr_ref;
+	t_dlist *ptr_check;
+
+	ptr_ref = *lst;
+//	printf("ptr_ref = %p\n", ptr_ref);
+
+	while(ptr_ref != NULL)
+	{
+		ptr_check = ptr_ref->next;
+			//printf("ref_content = %d\n check_content = %d\n", ptr_ref->content, ptr_check->content);
+			//printf("ptr_check = %p\n", ptr_check);
+		while(ptr_check != NULL)
+		{
+			printf("ref_content = %d\ncheck_content = %d\n", ptr_ref->content, ptr_check->content);
+			if (ptr_ref->content == ptr_check->content)
+				return (0);
+			ptr_check = ptr_check->next;
+		}
+		ptr_ref = ptr_ref->next;
+
+		//printf("ptr_ref = %p\n", ptr_ref);
+	}
+	return (1);
 }
 
 void	ft_lstprint(t_dlist **first)
@@ -25,7 +45,7 @@ void	ft_lstprint(t_dlist **first)
 	t_dlist *ptr;
 
 	ptr = *first;
-	while(ptr->next != *first)
+	while(ptr->next != NULL)
 	{	
 		printf("%d -> ", ptr->content);
 		ptr = ptr->next;
@@ -53,6 +73,7 @@ t_dlist	*convert(char *input)
 	tab = ft_split(input, ' ');
 	inter = ft_atoi(tab[i]);
 	int_list = lstnew_dbl(inter);
+	//i++;
 
 	//printf("%d\n", (int)int_list->next->content);
 	//printf("%d\n", (int)int_list->content);
@@ -61,10 +82,16 @@ t_dlist	*convert(char *input)
 		inter = ft_atoi(tab[i]);
 		//printf("%d\n", inter);
 		lst_addback(&int_list, lstnew_dbl(inter));
+		//i++;
 	}
 	free(tab);
 	//ft_lstprint(&int_list);
 	//ra(&int_list);
+	if (!twin_checker(&int_list))
+	{
+		ft_putstr_fd(RED"Error\n", 2);
+		return (0);
+	}
 	ft_lstprint(&int_list);
 	return (int_list);
 }
@@ -87,6 +114,11 @@ t_dlist *convert_sep(char **input)
 		inter = ft_atoi(input[i]);
 		lst_addback(&int_list, lstnew_dbl(inter));
 		//printf("%s\n", input[i]);
+	}
+	if (!twin_checker(&int_list))
+	{
+		ft_putstr_fd(RED"Error\n", 2);
+		return (0);
 	}
 	ft_lstprint(&int_list);
 	return (int_list);
@@ -131,12 +163,12 @@ int main(int argc, char **argv)
 		{
 			if (argc == 2)
 			{
-				printf("%s", "Arg == 2\n");
+				//printf("%s", "Arg == 2\n");
 				convert(*argv);
 			}
 			else
 			{
-				printf("%s", "Arg + 2\n");
+				//printf("%s", "Arg + 2\n");
 				convert_sep(argv);
 			}
 		}

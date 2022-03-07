@@ -30,7 +30,7 @@ typedef struct s_dlist
 #include <stdio.h>
 
 t_dlist	*lstnew_dbl(int content);
-t_dlist	*lstlast(t_dlist **first, t_dlist *lst);
+t_dlist	*lstlast(t_dlist *lst);
 void	lst_addback(t_dlist **alst, t_dlist *new);
 
 
