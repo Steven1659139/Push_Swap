@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int	n;
+	long long	n;
 	int	negation;
 
 	n = 0;

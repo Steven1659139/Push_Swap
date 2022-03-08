@@ -11,34 +11,6 @@
 /* ************************************************************************** */
 
 #include "Push_swap.h"
-#include <stdio.h>
-
-int twin_checker(t_dlist **lst)
-{
-	t_dlist *ptr_ref;
-	t_dlist *ptr_check;
-
-	ptr_ref = *lst;
-//	printf("ptr_ref = %p\n", ptr_ref);
-
-	while(ptr_ref != NULL)
-	{
-		ptr_check = ptr_ref->next;
-			//printf("ref_content = %d\n check_content = %d\n", ptr_ref->content, ptr_check->content);
-			//printf("ptr_check = %p\n", ptr_check);
-		while(ptr_check != NULL)
-		{
-			printf("ref_content = %d\ncheck_content = %d\n", ptr_ref->content, ptr_check->content);
-			if (ptr_ref->content == ptr_check->content)
-				return (0);
-			ptr_check = ptr_check->next;
-		}
-		ptr_ref = ptr_ref->next;
-
-		//printf("ptr_ref = %p\n", ptr_ref);
-	}
-	return (1);
-}
 
 void	ft_lstprint(t_dlist **first)
 {
@@ -66,12 +38,17 @@ t_dlist	*convert(char *input)
 {
 	char **tab;
 	t_dlist *int_list;
-	int inter;
+	long long inter;
 	int i;
 
 	i = 0;
 	tab = ft_split(input, ' ');
 	inter = ft_atoi(tab[i]);
+	if (!int_checker(inter))
+	{
+		ft_putstr_fd(RED"Error\n", 2);
+		return (0);
+	}
 	int_list = lstnew_dbl(inter);
 	//i++;
 
@@ -80,6 +57,11 @@ t_dlist	*convert(char *input)
 	while (tab[++i] != NULL)
 	{
 		inter = ft_atoi(tab[i]);
+		if (!int_checker(inter))
+		{
+			ft_putstr_fd(RED"Error\n", 2);
+			return (0);
+		}
 		//printf("%d\n", inter);
 		lst_addback(&int_list, lstnew_dbl(inter));
 		//i++;
@@ -99,7 +81,7 @@ t_dlist	*convert(char *input)
 t_dlist *convert_sep(char **input)
 {
 	int i;
-	int inter;
+	long long inter;
 
 
 	t_dlist *int_list;
@@ -107,11 +89,23 @@ t_dlist *convert_sep(char **input)
 	i = 0;
 
 	inter = ft_atoi(input[i]);
+	if (!int_checker(inter))
+	{
+		ft_putstr_fd(RED"Error\n", 2);
+		return (0);
+	}
 	int_list = lstnew_dbl(inter);
+
 
 	while (input[++i] != NULL)
 	{
 		inter = ft_atoi(input[i]);
+		//printf("inter = %lld", inter);
+		if (!int_checker(inter))
+		{
+			ft_putstr_fd(RED"Error\n", 2);
+			return (0);
+		}
 		lst_addback(&int_list, lstnew_dbl(inter));
 		//printf("%s\n", input[i]);
 	}
@@ -126,33 +120,6 @@ t_dlist *convert_sep(char **input)
 
 }
 
-int	check_input(char **input)
-{
-	int i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	//printf("string = %s\n", input[j]);
-	//j++;
-	//printf("string = %s\n", input[j]);
-	//printf("char = %c\n", *input[i]);
-	while (input[j] != NULL)
-	{
-		//printf("string = %s\n", input[j]);
-		//printf("len = %d\n", (int)ft_strlen(input[j]));
-		while (i < ft_strlen(input[j]))
-		{
-			//printf("char = %c\n", input[j][i]);
-			if ((!ft_isdigit(input[j][i]) && !(' ' == input[j][i])))
-				return (0);
-			i++;
-		}
-		j++;
-		i = 0;
-	}
-	return (1);
-}
 
 int main(int argc, char **argv)
 {

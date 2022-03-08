@@ -31,6 +31,9 @@ typedef struct s_list
 # define VIOLET "\e[0;35m"
 # define CYAN "\e[0;36m"
 
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -49,7 +52,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f) (void *));
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-int		ft_atoi(const char *str);
+long long		ft_atoi(const char *str);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

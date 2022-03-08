@@ -29,6 +29,11 @@ typedef struct s_dlist
 #include "Libft/libft.h"
 #include <stdio.h>
 
+// Parsing
+int	int_checker(long long nb);
+int twin_checker(t_dlist **lst);
+int	check_input(char **input);
+
 t_dlist	*lstnew_dbl(int content);
 t_dlist	*lstlast(t_dlist *lst);
 void	lst_addback(t_dlist **alst, t_dlist *new);
