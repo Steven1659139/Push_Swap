@@ -40,7 +40,9 @@ int	check_input(char **input)
 	int i;
 	int	j;
 	int	nb;
+	int neg;
 
+	neg = 0;
 	i = 0;
 	j = 0;
 	nb = 0;
@@ -52,10 +54,15 @@ int	check_input(char **input)
 				return (0);
 			if (ft_isdigit(input[j][i]))	
 				nb++;
+			if (input[j][i] == '-')
+				neg++;
+				if (neg > 1)
+					return (0);
 			i++;
 		}
 		j++;
 		i = 0;
+		neg = 0;
 	}
 	if (nb < 1)
 		return (0);

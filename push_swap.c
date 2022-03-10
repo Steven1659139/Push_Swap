@@ -50,10 +50,6 @@ t_dlist	*convert(char *input)
 		return (0);
 	}
 	int_list = lstnew_dbl(inter);
-	//i++;
-
-	//printf("%d\n", (int)int_list->next->content);
-	//printf("%d\n", (int)int_list->content);
 	while (tab[++i] != NULL)
 	{
 		inter = ft_atoi(tab[i]);
@@ -62,13 +58,9 @@ t_dlist	*convert(char *input)
 			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
-		//printf("%d\n", inter);
 		lst_addback(&int_list, lstnew_dbl(inter));
-		//i++;
 	}
 	free(tab);
-	//ft_lstprint(&int_list);
-	//ra(&int_list);
 	if (!twin_checker(&int_list))
 	{
 		ft_putstr_fd(RED"Error\n", 2);
@@ -82,12 +74,9 @@ t_dlist *convert_sep(char **input)
 {
 	int i;
 	long long inter;
-
-
 	t_dlist *int_list;
 
 	i = 0;
-
 	inter = ft_atoi(input[i]);
 	if (!int_checker(inter))
 	{
@@ -95,19 +84,15 @@ t_dlist *convert_sep(char **input)
 		return (0);
 	}
 	int_list = lstnew_dbl(inter);
-
-
 	while (input[++i] != NULL)
 	{
 		inter = ft_atoi(input[i]);
-		//printf("inter = %lld", inter);
 		if (!int_checker(inter))
 		{
 			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
 		lst_addback(&int_list, lstnew_dbl(inter));
-		//printf("%s\n", input[i]);
 	}
 	if (!twin_checker(&int_list))
 	{
@@ -116,8 +101,6 @@ t_dlist *convert_sep(char **input)
 	}
 	ft_lstprint(&int_list);
 	return (int_list);
-
-
 }
 
 
