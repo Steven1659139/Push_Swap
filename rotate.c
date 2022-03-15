@@ -1,8 +1,8 @@
 #include "Push_swap.h"
 
-void    ra()
+void    ra(t_dlist **stack)
 {
-
+    
 }
 
 void    rb()
@@ -14,3 +14,5 @@ void    rr()
 {
 
 }
+
+

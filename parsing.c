@@ -14,14 +14,11 @@ int twin_checker(t_dlist **lst)
 	t_dlist *ptr_check;
 
 	ptr_ref = *lst;
-//	printf("ptr_ref = %p\n", ptr_ref);
 
-	while(ptr_ref != NULL)
+	while(ptr_ref->next	!= *lst)
 	{
 		ptr_check = ptr_ref->next;
-			//printf("ref_content = %d\n check_content = %d\n", ptr_ref->content, ptr_check->content);
-			//printf("ptr_check = %p\n", ptr_check);
-		while(ptr_check != NULL)
+		while(ptr_check != *lst)
 		{
 			//printf("ref_content = %d\ncheck_content = %d\n", ptr_ref->content, ptr_check->content);
 			if (ptr_ref->content == ptr_check->content)
@@ -29,8 +26,6 @@ int twin_checker(t_dlist **lst)
 			ptr_check = ptr_check->next;
 		}
 		ptr_ref = ptr_ref->next;
-
-		//printf("ptr_ref = %p\n", ptr_ref);
 	}
 	return (1);
 }

@@ -17,7 +17,9 @@ void	ft_lstprint(t_dlist **first)
 	t_dlist *ptr;
 
 	ptr = *first;
-	while(ptr->next != NULL)
+	if (!*first)
+		return ;
+	while(ptr->next != *first)
 	{	
 		printf("%d -> ", ptr->content);
 		ptr = ptr->next;
@@ -37,7 +39,7 @@ void	ft_lstprint(t_dlist **first)
 t_dlist	*convert(char *input)
 {
 	char **tab;
-	t_dlist *int_list;
+	t_dlist *stack_a;
 	long long inter;
 	int i;
 
@@ -49,7 +51,8 @@ t_dlist	*convert(char *input)
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
 	}
-	int_list = lstnew_dbl(inter);
+	//printf("inter = %lld\n", inter);
+	stack_a = lstnew_dbl(inter);
 	while (tab[++i] != NULL)
 	{
 		inter = ft_atoi(tab[i]);
@@ -58,23 +61,25 @@ t_dlist	*convert(char *input)
 			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
-		lst_addback(&int_list, lstnew_dbl(inter));
+		lstadd(&stack_a, lstnew_dbl(inter));
+		//printf("inter = %lld\n", inter);
 	}
 	free(tab);
-	if (!twin_checker(&int_list))
+	if (!twin_checker(&stack_a))
 	{
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
 	}
-	ft_lstprint(&int_list);
-	return (int_list);
+	//ra(&stack_a);
+	ft_lstprint(&stack_a);
+	return (stack_a);
 }
 
 t_dlist *convert_sep(char **input)
 {
 	int i;
 	long long inter;
-	t_dlist *int_list;
+	t_dlist *stack_a;
 
 	i = 0;
 	inter = ft_atoi(input[i]);
@@ -83,7 +88,7 @@ t_dlist *convert_sep(char **input)
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
 	}
-	int_list = lstnew_dbl(inter);
+	stack_a = lstnew_dbl(inter);
 	while (input[++i] != NULL)
 	{
 		inter = ft_atoi(input[i]);
@@ -92,20 +97,30 @@ t_dlist *convert_sep(char **input)
 			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
-		lst_addback(&int_list, lstnew_dbl(inter));
+		lstadd(&stack_a, lstnew_dbl(inter));
 	}
-	if (!twin_checker(&int_list))
+	if (!twin_checker(&stack_a))
 	{
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
 	}
-	ft_lstprint(&int_list);
-	return (int_list);
+	ft_lstprint(&stack_a);
+	return (stack_a);
 }
 
+/*void	init_package(t_package_deal **container)
+{
+	(*container)->size_a = 0;
+	(*container)->size_b = 0;
+}*/
 
 int main(int argc, char **argv)
 {
+	//t_package_deal		*container;
+
+	//init_package(container);
+
+	
 	argv++;
 	//printf("Output_check = %d\n", check_input(argv));
 	if (argc > 1 && check_input(argv))

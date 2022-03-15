@@ -18,6 +18,8 @@
 - len
 - position, set_first set_last
 */
+#include "Libft/libft.h"
+#include <stdio.h>
 
 typedef struct s_dlist
 {
@@ -26,8 +28,23 @@ typedef struct s_dlist
 	struct s_dlist	*prev;
 }					t_dlist;
 
-#include "Libft/libft.h"
-#include <stdio.h>
+typedef struct s_stacks
+{
+	t_dlist	*a;
+	t_dlist	*b;
+	int		min_value;
+	int		max_value;
+}				t_stack;
+
+typedef struct s_package_deal
+{
+	t_dlist	*stack_a_head;
+	t_dlist *stack_b_head;
+	int		size_a;
+	int		size_b;
+}				t_package_deal;
+
+
 
 // Parsing
 int	int_checker(long long nb);
@@ -35,8 +52,13 @@ int twin_checker(t_dlist **lst);
 int	check_input(char **input);
 
 t_dlist	*lstnew_dbl(int content);
-t_dlist	*lstlast(t_dlist *lst);
+t_dlist	*lstlast(t_dlist **first, t_dlist *lst);
 void	lst_addback(t_dlist **alst, t_dlist *new);
+void    lstadd(t_dlist **first, t_dlist *new);
+size_t  ft_lstlen(t_dlist **first);
+//move
+
+void    ra(t_dlist **list);
 
 
 #endif

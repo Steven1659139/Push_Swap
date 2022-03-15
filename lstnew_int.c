@@ -10,7 +10,7 @@ t_dlist	*lstnew_dbl(int content)
 	if (!new)
 		return (0);
 	new -> content = content;
-	new -> next = 0;
-	new -> prev = 0;
+	new -> next = new;
+	new -> prev = new;
 	return (new);
 }

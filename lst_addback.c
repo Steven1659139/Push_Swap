@@ -11,9 +11,9 @@ void	lst_addback(t_dlist **alst, t_dlist *new)
 		*alst = new;
 		return ;
 	}
-	last = lstlast(*alst);
+	last = lstlast(alst, *alst);
 	new -> prev = last;
 	last -> next = new;
-	//new ->next = *alst;
-	//first->prev = new;	
+	new ->next = *alst;
+	first->prev = new;	
 }

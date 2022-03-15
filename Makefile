@@ -1,6 +1,6 @@
 NAME = Push_swap
 
-SRC = push_swap.c lstnew_int.c lstlast.c lst_addback.c parsing.c
+SRC = push_swap.c lstnew_int.c lstlast.c  parsing.c rotate.c lst_addback.c ft_lstadd.c ft_lstlen.c
 
 FLAG = -Werror -Wall -Wextra
 

@@ -2,14 +2,14 @@
 
 /* modifier nom et replacer dans la libft */
 
-t_dlist	*lstlast(t_dlist *lst)
+t_dlist	*lstlast(t_dlist **first, t_dlist *lst)
 {
 	if (!lst)
 		return (0);
-	if (lst -> next == NULL)
+	if (lst -> next == *first)
 		return (lst);
 
-	while (lst -> next != NULL)
+	while (lst -> next != *first)
 	{
 		lst = lst -> next;
 	}
