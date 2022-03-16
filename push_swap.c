@@ -36,7 +36,7 @@ void	ft_lstprint(t_dlist **first)
 	printf("%d -> ", ptr->content);*/
 }
 
-t_dlist	*convert(char *input)
+t_dlist	*convert(t_package_deal **container, char *input)
 {
 	char **tab;
 	t_dlist *stack_a;
@@ -75,7 +75,7 @@ t_dlist	*convert(char *input)
 	return (stack_a);
 }
 
-t_dlist *convert_sep(char **input)
+t_dlist *convert_sep(t_package_deal **container, char **input)
 {
 	int i;
 	long long inter;
@@ -116,9 +116,9 @@ t_dlist *convert_sep(char **input)
 
 int main(int argc, char **argv)
 {
-	//t_package_deal		*container;
+	t_package_deal		*container;
 
-	//init_package(container);
+	//init_package(&container);
 
 	
 	argv++;
@@ -129,12 +129,12 @@ int main(int argc, char **argv)
 			if (argc == 2)
 			{
 				//printf("%s", "Arg == 2\n");
-				convert(*argv);
+				convert(&container, *argv);
 			}
 			else
 			{
 				//printf("%s", "Arg + 2\n");
-				convert_sep(argv);
+				convert_sep(&container, argv);
 			}
 		}
 	}

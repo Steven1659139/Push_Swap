@@ -58,7 +58,7 @@ void    lstadd(t_dlist **first, t_dlist *new);
 size_t  ft_lstlen(t_dlist **first);
 //move
 
-void    ra(t_dlist **list);
+void    ra(t_package_deal *stack);
 
 
 #endif
