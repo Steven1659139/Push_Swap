@@ -43,7 +43,7 @@ int	check_input(char **input)
 	nb = 0;
 	while (input[j] != NULL)
 	{
-		while (i < ft_strlen(input[j]))
+		while (i < (int)ft_strlen(input[j]))
 		{
 			if ((!ft_isdigit(input[j][i]) && !(' ' == input[j][i]) && !(input[j][i] == '-')))
 				return (0);

@@ -40,6 +40,7 @@ typedef struct s_package_deal
 {
 	t_dlist	*stack_a_head;
 	t_dlist *stack_b_head;
+	t_dlist	*temp;
 	int		size_a;
 	int		size_b;
 }				t_package_deal;
@@ -56,9 +57,10 @@ t_dlist	*lstlast(t_dlist **first, t_dlist *lst);
 void	lst_addback(t_dlist **alst, t_dlist *new);
 void    lstadd(t_dlist **first, t_dlist *new);
 size_t  ft_lstlen(t_dlist **first);
+int ft_countword(char **tab);
 //move
 
-void    ra(t_package_deal *stack);
-
+void    rotate(t_package_deal *container, char stack);
+void    pb(t_package_deal *container, char stack);
 
 #endif

@@ -2,11 +2,12 @@
 
 void    lstadd(t_dlist **first, t_dlist *new)
 {
+    static int  index;
     t_dlist *elem1;
     t_dlist *last;
  
-
-    if (!*first)
+    index++;
+    if (!*first || index == 1)
     {
         *first = new;
         return ;

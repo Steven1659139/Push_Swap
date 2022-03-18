@@ -12,20 +12,20 @@
 
 #include "Push_swap.h"
 
-void	ft_lstprint(t_dlist **first)
+void	ft_lstprint(t_dlist *first)
 {
 	t_dlist *ptr;
 
-	ptr = *first;
-	if (!*first)
+	ptr = first;
+	if (!first)
 		return ;
-	while(ptr->next != *first)
+	while(ptr->next != first)
 	{	
 		printf("%d -> ", ptr->content);
 		ptr = ptr->next;
 	}
 	printf("%d -> \n", ptr->content);
-	/*while(ptr->prev != *first)
+	/*while(ptr->prev != first)
 	{
 		
 		printf("%d -> ", ptr->content);
@@ -36,7 +36,7 @@ void	ft_lstprint(t_dlist **first)
 	printf("%d -> ", ptr->content);*/
 }
 
-t_dlist	*convert(t_package_deal **container, char *input)
+t_dlist	*convert(t_package_deal *container, char *argv)
 {
 	char **tab;
 	t_dlist *stack_a;
@@ -44,84 +44,114 @@ t_dlist	*convert(t_package_deal **container, char *input)
 	int i;
 
 	i = 0;
-	tab = ft_split(input, ' ');
-	inter = ft_atoi(tab[i]);
-	if (!int_checker(inter))
+	tab = ft_split(argv, ' ');
+	//inter = ft_atoi(tab[i]);
+	/*if (!int_checker(inter))
 	{
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
-	}
-	//printf("inter = %lld\n", inter);
-	stack_a = lstnew_dbl(inter);
-	while (tab[++i] != NULL)
+	}*/
+	
+	//stack_a = lstnew_dbl(inter);
+	while (tab[i])
 	{
+		//printf("tab = %s\n", tab[i]);
 		inter = ft_atoi(tab[i]);
+		
 		if (!int_checker(inter))
 		{
 			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
+		
 		lstadd(&stack_a, lstnew_dbl(inter));
+		container->size_a += 1;
 		//printf("inter = %lld\n", inter);
+		i++;
 	}
 	free(tab);
+	
 	if (!twin_checker(&stack_a))
 	{
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
 	}
-	//ra(&stack_a);
-	ft_lstprint(&stack_a);
+	
+	container->stack_a_head = stack_a;
+	//printf("head_a = %d\n", container->stack_a_head->content);
+	//rotate(container, 'A');
+	
+	pb(container, 'B');
+	pb(container, 'B');
+	pb(container, 'B');
+	pb(container, 'B');
+	pb(container, 'B');
+
+
+	//printf("head_a = %d\n", container->stack_a_head->content);
+	ft_lstprint(container->stack_a_head);
+	ft_lstprint(container->stack_b_head);
+
+
+	
 	return (stack_a);
 }
 
-t_dlist *convert_sep(t_package_deal **container, char **input)
+t_dlist *convert_sep(t_package_deal *container, char **argv)
 {
 	int i;
 	long long inter;
 	t_dlist *stack_a;
 
 	i = 0;
-	inter = ft_atoi(input[i]);
+	inter = 0;
+	//inter = ft_atoi(argv[i]);
 	if (!int_checker(inter))
 	{
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
 	}
-	stack_a = lstnew_dbl(inter);
-	while (input[++i] != NULL)
+	//stack_a = lstnew_dbl(inter);
+	while (argv[i] != NULL)
 	{
-		inter = ft_atoi(input[i]);
+		inter = ft_atoi(argv[i]);
+		
 		if (!int_checker(inter))
 		{
 			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
 		lstadd(&stack_a, lstnew_dbl(inter));
+		i++;
 	}
 	if (!twin_checker(&stack_a))
 	{
 		ft_putstr_fd(RED"Error\n", 2);
 		return (0);
 	}
-	ft_lstprint(&stack_a);
+	container->stack_a_head = stack_a;
+	ft_lstprint(container->stack_a_head);
 	return (stack_a);
 }
 
-/*void	init_package(t_package_deal **container)
+void	init_package(t_package_deal *container)
 {
-	(*container)->size_a = 0;
-	(*container)->size_b = 0;
-}*/
+	container->size_a = 0;
+	container->size_b = 0;
+	container->stack_a_head = NULL;
+	container->stack_b_head = NULL;
+}
 
 int main(int argc, char **argv)
 {
 	t_package_deal		*container;
 
-	//init_package(&container);
+	container = malloc(sizeof(t_package_deal));
+	//init_package(container);
 
 	
 	argv++;
+	//container.size_a = 0;
 	//printf("Output_check = %d\n", check_input(argv));
 	if (argc > 1 && check_input(argv))
 	{
@@ -129,12 +159,12 @@ int main(int argc, char **argv)
 			if (argc == 2)
 			{
 				//printf("%s", "Arg == 2\n");
-				convert(&container, *argv);
+				convert(container, *argv);
 			}
 			else
 			{
 				//printf("%s", "Arg + 2\n");
-				convert_sep(&container, argv);
+				convert_sep(container, argv);
 			}
 		}
 	}
