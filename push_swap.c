@@ -87,6 +87,14 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 	pb(container, 'B');
 	pb(container, 'B');
 
+	ft_lstprint(container->stack_a_head);
+	ft_lstprint(container->stack_b_head);
+
+	pa(container, 'A');
+	pa(container, 'A');
+	pa(container, 'A');
+	pa(container, 'A');
+	pa(container, 'A');
 
 	//printf("head_a = %d\n", container->stack_a_head->content);
 	ft_lstprint(container->stack_a_head);
