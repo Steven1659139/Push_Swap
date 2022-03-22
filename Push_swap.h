@@ -61,7 +61,11 @@ int ft_countword(char **tab);
 //move
 
 void    rotate(t_package_deal *container, char stack);
-void    pb(t_package_deal *container, char stack);
-void    pa(t_package_deal *container, char stack);
+void    pb(t_package_deal *container);
+void    pa(t_package_deal *container);
+void    sa(t_package_deal *container);
+void    sb(t_package_deal *container);
+void    ss(t_package_deal *container);
+void    reverse_rotate(t_package_deal *container, char stack);
 
 #endif

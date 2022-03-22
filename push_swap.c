@@ -78,30 +78,93 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 	}
 	
 	container->stack_a_head = stack_a;
-	//printf("head_a = %d\n", container->stack_a_head->content);
-	//rotate(container, 'A');
-	
-	pb(container, 'B');
-	pb(container, 'B');
-	pb(container, 'B');
-	pb(container, 'B');
-	pb(container, 'B');
 
-	ft_lstprint(container->stack_a_head);
-	ft_lstprint(container->stack_b_head);
-
-	pa(container, 'A');
-	pa(container, 'A');
-	pa(container, 'A');
-	pa(container, 'A');
-	pa(container, 'A');
-
-	//printf("head_a = %d\n", container->stack_a_head->content);
-	ft_lstprint(container->stack_a_head);
-	ft_lstprint(container->stack_b_head);
+	// sa(container);
+	// printf("sa\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
 
 
-	
+	// pb(container);
+	// printf("pb\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// pb(container);
+	// printf("pb\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// rotate(container, 'A');
+	// printf("ra\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// rotate(container, 'B');
+	// printf("rb\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// rotate(container, 'C');
+	// printf("rr\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// sa(container);
+	// printf("sa\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// sb(container);
+	// printf("sb\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// ss(container);
+	// printf("ss\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// reverse_rotate(container, 'A');
+	// printf("rra\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// reverse_rotate(container, 'B');
+	// printf("rrb\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+	// reverse_rotate(container, 'C');
+	// printf("rrr\n");
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
+
+
 	return (stack_a);
 }
 
