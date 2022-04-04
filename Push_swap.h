@@ -56,6 +56,7 @@ typedef struct s_package_deal
 int	int_checker(long long nb);
 int twin_checker(t_dlist **lst);
 int	check_input(char **input);
+void	ft_lstprint(t_dlist *first);
 
 t_dlist	*lstnew_dbl(int content);
 t_dlist	*lstlast(t_dlist **first, t_dlist *lst);

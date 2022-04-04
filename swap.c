@@ -17,6 +17,10 @@ void    sa(t_package_deal *container)
             container->temp->prev = container->stack_a_head;
             container->stack_a_head = container->stack_a_head->prev;
             ft_putstr_fd("sa\n", 1);
+            printf("Stack A\n");
+            ft_lstprint(container->stack_a_head);
+            printf("Stack B\n");
+            ft_lstprint(container->stack_b_head);         
         }
     }
 }
@@ -38,6 +42,10 @@ void    sb(t_package_deal *container)
             container->temp->prev = container->stack_b_head;
             container->stack_b_head = container->stack_b_head->prev;
             ft_putstr_fd("sb\n", 1);
+            printf("Stack A\n");
+            ft_lstprint(container->stack_a_head);
+            printf("Stack B\n");
+            ft_lstprint(container->stack_b_head);             
         }
     }
 }
@@ -47,6 +55,10 @@ void    ss(t_package_deal *container)
     sa(container);
     sb(container);
     ft_putstr_fd("ss\n", 1);
+    printf("Stack A\n");
+    ft_lstprint(container->stack_a_head);
+    printf("Stack B\n");
+    ft_lstprint(container->stack_b_head); 
 }
 
 // {

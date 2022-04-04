@@ -65,6 +65,7 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 		}
 		lstadd(&stack_a, lstnew_dbl(inter));
 		container->size_a += 1;
+		printf("size A = %d\n", container->size_a);
 		//printf("inter = %lld\n", inter);
 		i++;
 	}
@@ -83,12 +84,16 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 	sort5(container);
 	//sa(container);
 	ft_lstprint(container->stack_a_head);
-	
+	ft_lstprint(container->stack_b_head);
 
 	// printf("Stack A\n");
 	
 	// printf("Stack B\n");
-	// ft_lstprint(container->stack_b_head);
+
+	printf("Stack A\n");
+	ft_lstprint(container->stack_a_head);
+	printf("Stack B\n");
+	ft_lstprint(container->stack_b_head);
 
 
 	// pb(container);
@@ -100,10 +105,7 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 
 	// pb(container);
 	// printf("pb\n");
-	// printf("Stack A\n");
-	// ft_lstprint(container->stack_a_head);
-	// printf("Stack B\n");
-	// ft_lstprint(container->stack_b_head);
+
 
 	// rotate(container, 'A');
 	// printf("ra\n");
