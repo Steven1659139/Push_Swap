@@ -22,6 +22,7 @@ void    pb(t_package_deal *container)
             container->stack_a_head = container->temp;
             container->size_a -= 1;
             container->size_b += 1;
+            ft_putstr_fd("pb\n", 1);
                 //printf("size_a = %d\n", container->size_a);
                 //printf("size_b = %d\n", container->size_b);
             if (container->size_a == 0)
@@ -44,6 +45,7 @@ void    pb(t_package_deal *container)
 
             container->size_a -= 1;
             container->size_b += 1;
+            ft_putstr_fd("pb\n", 1);
             //printf("size_a = %d\n", container->size_a);
             //printf("size_b = %d\n", container->size_b);
             if (container->size_a == 0)
@@ -73,8 +75,10 @@ void    pa(t_package_deal *container)
             container->stack_b_head = container->temp;
             container->size_b -= 1;
             container->size_a += 1;
-            printf("size_a = %d\n", container->size_a);
-            printf("size_b = %d\n", container->size_b);
+            ft_putstr_fd("pa\n", 1);
+
+            // printf("size_a = %d\n", container->size_a);
+            // printf("size_b = %d\n", container->size_b);
             if (container->size_b == 0)
                 container->stack_b_head = NULL;
         }
@@ -96,6 +100,8 @@ void    pa(t_package_deal *container)
 
             container->size_b -= 1;
             container->size_a += 1;
+            ft_putstr_fd("pa\n", 1);
+
             //printf("size_a = %d\n", container->size_a);
             //printf("size_b = %d\n", container->size_b);
             if (container->size_b == 0)

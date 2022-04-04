@@ -24,6 +24,7 @@
 typedef struct s_dlist
 {
 	int			content;
+	int			index;
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }					t_dlist;
@@ -43,6 +44,10 @@ typedef struct s_package_deal
 	t_dlist	*temp;
 	int		size_a;
 	int		size_b;
+	int		size_max;
+	int		min_a;
+	int		max_b;
+
 }				t_package_deal;
 
 
@@ -67,5 +72,11 @@ void    sa(t_package_deal *container);
 void    sb(t_package_deal *container);
 void    ss(t_package_deal *container);
 void    reverse_rotate(t_package_deal *container, char stack);
+
+//sort
+
+int check_sort(t_package_deal *container);
+void    sort3(t_package_deal *container);
+void    sort5(t_package_deal *container);
 
 #endif

@@ -13,11 +13,20 @@ void    rotate(t_package_deal *container, char stack)
             container->stack_a_head = container->stack_a_head->next;
         if (container->stack_b_head)
             container->stack_b_head = container->stack_b_head->next;
+        ft_putstr_fd("rr\n", 1);
+        
     }
     else if (stack == 'A' && container->stack_a_head)
+    {
         container->stack_a_head = container->stack_a_head->next;
+        ft_putstr_fd("ra\n", 1);
+
+    }
     else if (stack == 'B' && container->stack_b_head)
+    {
         container->stack_b_head = container->stack_b_head->next;
+        ft_putstr_fd("rb\n", 1);
+    }
     
 }
 
