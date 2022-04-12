@@ -24,6 +24,7 @@ void    pb(t_package_deal *container)
             container->stack_a_head = container->temp;
             container->size_a -= 1;
             container->size_b += 1;
+            container->nb_move += 1;
             ft_putstr_fd("pb\n", 1);            
             printf("Stack A\n");
             ft_lstprint(container->stack_a_head);
@@ -52,6 +53,7 @@ void    pb(t_package_deal *container)
 
             container->size_a -= 1;
             container->size_b += 1;
+            container->nb_move += 1;
             ft_putstr_fd("pb\n", 1);
             printf("Stack A\n");
             ft_lstprint(container->stack_a_head);
@@ -89,6 +91,7 @@ void    pa(t_package_deal *container)
             container->stack_b_head = container->temp;
             container->size_b -= 1;
             container->size_a += 1;
+            container->nb_move += 1;
             ft_putstr_fd("pa\n", 1);
             printf("Stack A\n");
             ft_lstprint(container->stack_a_head);
@@ -117,6 +120,7 @@ void    pa(t_package_deal *container)
 
             container->size_b -= 1;
             container->size_a += 1;
+            container->nb_move += 1;
             ft_putstr_fd("pa\n", 1);
             printf("Stack A\n");
             ft_lstprint(container->stack_a_head);

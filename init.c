@@ -1,23 +1,32 @@
 #include "Push_swap.h"
 
 void    set_index(t_package_deal *container)
-{
+{   
+    printf("set index\n");
     t_dlist *ptr_ref;
     t_dlist *ptr_check;
+    int     min;
+    int     i;
 
+    i = 0;
     ptr_ref = container->stack_a_head;
-
-    while(ptr_ref->next	!= container->stack_a_head)
+    while(i < container->size_a)
     {
         ptr_check = ptr_ref->next;
-        while(ptr_check != container->stack_a_head)
+        min = ptr_ref->content;
+        container->temp = ptr_ref;
+        //printf("ptr_ref = %d\nptr_check = %d\nmin = %d\n", ptr_ref->content, ptr_check->content, min);
+        while(ptr_check != ptr_ref)
         {
-            //printf("ref_content = %d\ncheck_content = %d\n", ptr_ref->content, ptr_check->content);
-            if (ptr_ref < )
-                return (0);
+            if ((ptr_check->content < min) && !(ptr_check->index))
+            {
+                min = ptr_check->content;
+                container->temp = ptr_check;
+            }
             ptr_check = ptr_check->next;
         }
+        if (!(container->temp->index))
+            container->temp->index = ++i;
         ptr_ref = ptr_ref->next;
     }
-    return (1);
 }

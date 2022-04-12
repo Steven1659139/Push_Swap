@@ -25,15 +25,13 @@ void	ft_lstprint(t_dlist *first)
 		ptr = ptr->next;
 	}
 	printf("%d -> \n", ptr->content);
-	/*while(ptr->prev != first)
-	{
-		
-		printf("%d -> ", ptr->content);
-		ptr = ptr->prev;
+	ptr = first;
+	while(ptr->next != first)
+	{	
+		printf("%d -> ", ptr->index);
+		ptr = ptr->next;
 	}
-	printf("%d -> ", ptr->content);
-	ptr = ptr->prev;
-	printf("%d -> ", ptr->content);*/
+	printf("%d\n", ptr->index);
 }
 
 t_dlist	*convert(t_package_deal *container, char *argv)
@@ -79,21 +77,22 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 	
 	container->stack_a_head = stack_a;
 	container->size_max = container->size_a;
+	set_index(container);
 	ft_lstprint(container->stack_a_head);
+
 	//sort3(container);
-	sort5(container);
-	//sa(container);
-	ft_lstprint(container->stack_a_head);
-	ft_lstprint(container->stack_b_head);
+	//sort5(container);
+
+	printf("Nombre d'action = %d\n", container->nb_move);
 
 	// printf("Stack A\n");
 	
 	// printf("Stack B\n");
 
 	printf("Stack A\n");
-	ft_lstprint(container->stack_a_head);
+	//ft_lstprint(container->stack_a_head);
 	printf("Stack B\n");
-	ft_lstprint(container->stack_b_head);
+	//ft_lstprint(container->stack_b_head);
 
 
 	// pb(container);
@@ -169,7 +168,6 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 	// ft_lstprint(container->stack_a_head);
 	// printf("Stack B\n");
 	// ft_lstprint(container->stack_b_head);
-
 
 	return (stack_a);
 }

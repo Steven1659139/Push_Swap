@@ -47,6 +47,7 @@ typedef struct s_package_deal
 	int		size_max;
 	int		min_a;
 	int		max_b;
+	int		nb_move;
 
 }				t_package_deal;
 
@@ -76,7 +77,8 @@ void    reverse_rotate(t_package_deal *container, char stack);
 
 //sort
 
-int check_sort(t_package_deal *container);
+int check_sort(t_package_deal *container, int nb);
+void    set_index(t_package_deal *container);
 void    sort3(t_package_deal *container);
 void    sort5(t_package_deal *container);
 
