@@ -44,34 +44,40 @@ void    sort5(t_package_deal *container)
 {
     if (!check_sort(container, container->size_a))
     {
-        while (container->size_a > 3)
-            pb(container);
-        sort3(container);
-        while(!check_sort(container, 5))
-        {
-            if ((container->size_a < container->size_max))
-            {
-                while (!check_sort(container, 5))
-                {
-                    if (container->stack_b_head)
-                    {
-                        if ((container->stack_b_head->content > container->stack_a_head->content) && (container->stack_b_head->content < container->stack_a_head->next->content))
-                        {
-                            rotate(container, 'A');
-                            pa(container);
-                        }
-                        else if ((container->stack_b_head->content < container->stack_a_head->content) && (container->stack_b_head->content > container->stack_a_head->prev->content ))
-                            pa(container);
-                        else if ((container->stack_b_head->content > container->stack_a_head->content) && (container->stack_b_head->content > container->stack_a_head->next->content))
-                            if (container->size_b == 1)
-                                rotate(container, 'A');
-                            pa(container);
-                    }
-                    else
-                        rotate(container, 'A');
-                }
+        
 
-            }
-        }
     }
+
+
 }
+    // {
+    //     while (container->size_a > 3)
+    //         pb(container);
+    //     sort3(container);
+    //     while(!check_sort(container, 5))
+    //     {
+    //         if ((container->size_a < container->size_max))
+    //         {
+    //             while (!check_sort(container, 5))
+    //             {
+    //                 if (container->stack_b_head)
+    //                 {
+    //                     if ((container->stack_b_head->content > container->stack_a_head->content) && (container->stack_b_head->content < container->stack_a_head->next->content))
+    //                     {
+    //                         rotate(container, 'A');
+    //                         pa(container);
+    //                     }
+    //                     else if ((container->stack_b_head->content < container->stack_a_head->content) && (container->stack_b_head->content > container->stack_a_head->prev->content ))
+    //                         pa(container);
+    //                     else if ((container->stack_b_head->content > container->stack_a_head->content) && (container->stack_b_head->content > container->stack_a_head->next->content))
+    //                         if (container->size_b == 1)
+    //                             rotate(container, 'A');
+    //                         pa(container);
+    //                 }
+    //                 else
+    //                     rotate(container, 'A');
+    //             }
+
+    //         }
+    //     }
+    // }
