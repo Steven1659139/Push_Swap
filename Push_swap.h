@@ -80,7 +80,9 @@ void    reverse_rotate(t_package_deal *container, char stack);
 
 int check_sort(t_package_deal *container, int nb);
 void    set_index(t_package_deal *container);
-t_dlist *find_min(t_package_deal *list);
+t_dlist *find_min(t_package_deal *list, char stack);
+t_dlist *find_max(t_package_deal *list, char stack);
+void    on_top(t_package_deal *stack, t_dlist *node);
 void    sort3(t_package_deal *container);
 void    sort5(t_package_deal *container);
 

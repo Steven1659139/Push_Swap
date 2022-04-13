@@ -44,11 +44,33 @@ void    sort5(t_package_deal *container)
 {
     if (!check_sort(container, container->size_a))
     {
-        
+        t_dlist *min;
+
+        while (container->size_a > 3)
+        {
+            min = find_min(container, 'A');
+            on_top(container, min);
+            pb(container);
+        }
+        sort3(container);
+        while (container->size_a < container->size_max)
+            pa(container);
+
 
     }
 
 
+}
+
+void    on_top(t_package_deal *stack, t_dlist *node)
+{
+    while (stack->stack_a_head != node)
+    {
+        if (stack->find_pos > (stack->size_a / 2))
+            rotate(stack, 'A');
+        else
+            reverse_rotate(stack, 'A');
+    }
 }
     // {
     //     while (container->size_a > 3)
