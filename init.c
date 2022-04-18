@@ -30,3 +30,4 @@ void    set_index(t_package_deal *container)
         ptr_ref = ptr_ref->next;
     }
 }
+

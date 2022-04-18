@@ -42,11 +42,15 @@ typedef struct s_package_deal
 	t_dlist	*stack_a_head;
 	t_dlist *stack_b_head;
 	t_dlist	*temp;
+	t_dlist *node1;
+	t_dlist *node2;
 	int		size_a;
 	int		size_b;
 	int		size_max;
-	int		min_a;
-	int		max_b;
+	t_dlist	*min_a;
+	t_dlist	*max_a;
+	t_dlist *min_b;
+	t_dlist	*max_b;
 	int		find_pos;
 	int		nb_move;
 
@@ -82,8 +86,16 @@ int check_sort(t_package_deal *container, int nb);
 void    set_index(t_package_deal *container);
 t_dlist *find_min(t_package_deal *list, char stack);
 t_dlist *find_max(t_package_deal *list, char stack);
-void    on_top(t_package_deal *stack, t_dlist *node);
+t_dlist *find_node(t_package_deal *list, int min, int max, char stack);
+t_dlist *find_node_bottom(t_package_deal *list, int min, int max, char stack);
+void    find_pos(t_package_deal *container, t_dlist *node, char stack);
+int min_or_max(t_package_deal *container, t_dlist *node, char stack);
+void    on_top(t_package_deal *container, t_dlist *node, char stack);
 void    sort3(t_package_deal *container);
 void    sort5(t_package_deal *container);
+void    sort100(t_package_deal *container);
+
+void    update_stack_B(t_package_deal *container);
+void    update_stack_A(t_package_deal *container);
 
 #endif

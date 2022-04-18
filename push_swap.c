@@ -77,18 +77,23 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 	
 	container->stack_a_head = stack_a;
 	container->size_max = container->size_a;
-	//set_index(container);
 
-	//t_dlist *min;
+	set_index(container);
+
+
+	//t_dlist *node;
 	//t_dlist *max;
 
-	//min = find_min(container, 'A');
-	//printf("pos_min = %d\n", container->find_pos);
-	//max = find_max(container, 'A');
+
+	//node = (find_node(container, 1, 1, 'A'));
+	//printf("pos_node = %d\n", container->find_pos);
+	//max = find_max(container, 'B');
 	//printf("pos_max = %d\n", container->find_pos);
 	//printf("max = %d\n", max->content);
-	//printf("min = %d\n", min->content);
+	//printf("node = %d\n", node->content);
 	//ft_lstprint(container->stack_a_head);
+
+	sort100(container);
 
 	//sort3(container);
 	//sort5(container);
