@@ -63,7 +63,7 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 		}
 		lstadd(&stack_a, lstnew_dbl(inter));
 		container->size_a += 1;
-		printf("size A = %d\n", container->size_a);
+		//printf("size A = %d\n", container->size_a);
 		//printf("inter = %lld\n", inter);
 		i++;
 	}
@@ -77,34 +77,34 @@ t_dlist	*convert(t_package_deal *container, char *argv)
 	
 	container->stack_a_head = stack_a;
 	container->size_max = container->size_a;
-	set_index(container);
+	//set_index(container);
 
-	t_dlist *min;
-	t_dlist *max;
+	//t_dlist *min;
+	//t_dlist *max;
 
-	min = find_min(container, 'A');
-	printf("pos_min = %d\n", container->find_pos);
-	max = find_max(container, 'A');
-	printf("pos_max = %d\n", container->find_pos);
-	printf("max = %d\n", max->content);
-	printf("min = %d\n", min->content);
+	//min = find_min(container, 'A');
+	//printf("pos_min = %d\n", container->find_pos);
+	//max = find_max(container, 'A');
+	//printf("pos_max = %d\n", container->find_pos);
+	//printf("max = %d\n", max->content);
+	//printf("min = %d\n", min->content);
 	//ft_lstprint(container->stack_a_head);
 
 	//sort3(container);
-	sort5(container);
+	//sort5(container);
 
-	printf("Nombre d'action = %d\n", container->nb_move);
+	
 
 	// printf("Stack A\n");
 	
 	// printf("Stack B\n");
 
-	printf("Stack A\n");
-	//ft_lstprint(container->stack_a_head);
-	printf("Stack B\n");
-	//ft_lstprint(container->stack_b_head);
+	// printf("Stack A\n");
+	// ft_lstprint(container->stack_a_head);
+	// printf("Stack B\n");
+	// ft_lstprint(container->stack_b_head);
 
-
+	// printf("Nombre d'action = %d\n", container->nb_move);
 	// pb(container);
 	// printf("pb\n");
 	// printf("Stack A\n");
@@ -208,6 +208,7 @@ t_dlist *convert_sep(t_package_deal *container, char **argv)
 		}
 		lstadd(&stack_a, lstnew_dbl(inter));
 		i++;
+		container->size_a += 1;
 	}
 	if (!twin_checker(&stack_a))
 	{
@@ -215,7 +216,12 @@ t_dlist *convert_sep(t_package_deal *container, char **argv)
 		return (0);
 	}
 	container->stack_a_head = stack_a;
-	ft_lstprint(container->stack_a_head);
+	container->size_max = container->size_a;
+
+	set_index(container);
+	//ft_lstprint(container->stack_a_head);
+	
+	sort5(container);
 	return (stack_a);
 }
 

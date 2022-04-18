@@ -16,7 +16,7 @@ int check_sort(t_package_deal *container, int nb)
     }
     if (i < nb)
         return (0);
-    printf("Check sort %d OK\n", nb);
+    //printf("Check sort %d OK\n", nb);
     return (1);
 }
 
@@ -67,39 +67,8 @@ void    on_top(t_package_deal *stack, t_dlist *node)
     while (stack->stack_a_head != node)
     {
         if (stack->find_pos > (stack->size_a / 2))
-            rotate(stack, 'A');
-        else
             reverse_rotate(stack, 'A');
+        else
+            rotate(stack, 'A');
     }
 }
-    // {
-    //     while (container->size_a > 3)
-    //         pb(container);
-    //     sort3(container);
-    //     while(!check_sort(container, 5))
-    //     {
-    //         if ((container->size_a < container->size_max))
-    //         {
-    //             while (!check_sort(container, 5))
-    //             {
-    //                 if (container->stack_b_head)
-    //                 {
-    //                     if ((container->stack_b_head->content > container->stack_a_head->content) && (container->stack_b_head->content < container->stack_a_head->next->content))
-    //                     {
-    //                         rotate(container, 'A');
-    //                         pa(container);
-    //                     }
-    //                     else if ((container->stack_b_head->content < container->stack_a_head->content) && (container->stack_b_head->content > container->stack_a_head->prev->content ))
-    //                         pa(container);
-    //                     else if ((container->stack_b_head->content > container->stack_a_head->content) && (container->stack_b_head->content > container->stack_a_head->next->content))
-    //                         if (container->size_b == 1)
-    //                             rotate(container, 'A');
-    //                         pa(container);
-    //                 }
-    //                 else
-    //                     rotate(container, 'A');
-    //             }
-
-    //         }
-    //     }
-    // }

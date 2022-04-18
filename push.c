@@ -26,10 +26,10 @@ void    pb(t_package_deal *container)
             container->size_b += 1;
             container->nb_move += 1;
             ft_putstr_fd("pb\n", 1);            
-            printf("Stack A\n");
-            ft_lstprint(container->stack_a_head);
-            printf("Stack B\n");
-            ft_lstprint(container->stack_b_head);
+            //printf("Stack A\n");
+            //ft_lstprint(container->stack_a_head);
+            //printf("Stack B\n");
+            //ft_lstprint(container->stack_b_head);
             // printf("size_a = %d\n", container->size_a);
             // printf("size_b = %d\n", container->size_b);
             if (container->size_a == 0)
@@ -55,10 +55,10 @@ void    pb(t_package_deal *container)
             container->size_b += 1;
             container->nb_move += 1;
             ft_putstr_fd("pb\n", 1);
-            printf("Stack A\n");
-            ft_lstprint(container->stack_a_head);
-            printf("Stack B\n");
-            ft_lstprint(container->stack_b_head);
+            // printf("Stack A\n");
+            // ft_lstprint(container->stack_a_head);
+            // printf("Stack B\n");
+            // ft_lstprint(container->stack_b_head);
             
             // printf("size_a = %d\n", container->size_a);
             // printf("size_b = %d\n", container->size_b);
@@ -93,10 +93,10 @@ void    pa(t_package_deal *container)
             container->size_a += 1;
             container->nb_move += 1;
             ft_putstr_fd("pa\n", 1);
-            printf("Stack A\n");
-            ft_lstprint(container->stack_a_head);
-            printf("Stack B\n");
-            ft_lstprint(container->stack_b_head);
+            //printf("Stack A\n");
+            //ft_lstprint(container->stack_a_head);
+            //printf("Stack B\n");
+            //ft_lstprint(container->stack_b_head);
             // printf("size_a = %d\n", container->size_a);
             // printf("size_b = %d\n", container->size_b);
             if (container->size_b == 0)
@@ -122,10 +122,10 @@ void    pa(t_package_deal *container)
             container->size_a += 1;
             container->nb_move += 1;
             ft_putstr_fd("pa\n", 1);
-            printf("Stack A\n");
-            ft_lstprint(container->stack_a_head);
-            printf("Stack B\n");
-            ft_lstprint(container->stack_b_head);            
+            //printf("Stack A\n");
+            //ft_lstprint(container->stack_a_head);
+            //printf("Stack B\n");
+            //ft_lstprint(container->stack_b_head);            
             // printf("size_a = %d\n", container->size_a);
             // printf("size_b = %d\n", container->size_b);
             if (container->size_b == 0)
