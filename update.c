@@ -28,3 +28,27 @@ void    update_stack_A(t_package_deal *container)
 
 
 }
+
+void    update_position(t_package_deal *container)
+{
+    int i;
+    t_dlist *ref;
+    
+    i = 1;
+    ref = container->stack_a_head;
+    while (i <= container->size_a)
+    {
+        ref->position = i;
+        ref = ref->next;
+        i++;
+    }
+    ref = container->stack_b_head;
+    i = 1;
+    while (i <= container->size_b)
+    {
+        ref->position = i;
+        ref = ref->next;
+        i++;
+    }
+
+}

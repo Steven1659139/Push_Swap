@@ -25,6 +25,7 @@ typedef struct s_dlist
 {
 	int			content;
 	int			index;
+	int			position;
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }					t_dlist;
@@ -42,8 +43,6 @@ typedef struct s_package_deal
 	t_dlist	*stack_a_head;
 	t_dlist *stack_b_head;
 	t_dlist	*temp;
-	t_dlist *node1;
-	t_dlist *node2;
 	int		size_a;
 	int		size_b;
 	int		size_max;
@@ -97,5 +96,5 @@ void    sort100(t_package_deal *container);
 
 void    update_stack_B(t_package_deal *container);
 void    update_stack_A(t_package_deal *container);
-
+void    update_position(t_package_deal *container);
 #endif

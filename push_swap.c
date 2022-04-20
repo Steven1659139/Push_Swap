@@ -6,7 +6,7 @@
 /*   By: slavoie <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:25:04 by slavoie           #+#    #+#             */
-/*   Updated: 2022/02/14 14:02:53 by slavoie          ###   ########.fr       */
+/*   Updated: 2022/04/20 15:08:33 by slavoie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,9 +224,10 @@ t_dlist *convert_sep(t_package_deal *container, char **argv)
 	container->size_max = container->size_a;
 
 	set_index(container);
+	update_position(container);
 	//ft_lstprint(container->stack_a_head);
 	
-	sort5(container);
+	sort100(container);
 	return (stack_a);
 }
 
