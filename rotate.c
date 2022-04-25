@@ -4,7 +4,6 @@
 */
 
 
-
 void    rotate(t_package_deal *container, char stack)
 {
     if (stack == 'C')

@@ -119,6 +119,63 @@ void    sort100(t_package_deal *container)
     //ft_lstprint(container->stack_b_head);
 }
 
+void    sort500(t_package_deal *container)
+{
+    t_dlist *node1;
+    t_dlist *node2;
+    int chunk;
+    int start;
+
+    chunk = container->size_a / 11;
+    start = 1;
+
+    //printf("chunk = %d\n", chunk);
+    while (container->size_a > 0)
+    {
+        while (find_node(container, start, chunk, 'A'))
+        {
+            //printf("chunk = %d\n", chunk);            
+            node1 = find_node(container, start, chunk, 'A');
+            container->pos1 = ft_abs((container->find_pos - (container->size_a / 2)));
+            node2 = find_node_bottom(container, start, chunk, 'A');
+            container->pos2 = ft_abs((container->find_pos - (container->size_a / 2)));
+
+            if (container->pos1 > container->pos2)
+            {
+                if (min_or_max(container, container->stack_a_head, 'B'))
+                    on_top(container, container->min_b, 'B');
+                on_top(container, node1, 'A');
+                pb(container);
+            }
+            else
+            {
+                if (min_or_max(container, container->stack_a_head, 'B'))
+                    on_top(container, container->min_b, 'B'); 
+                on_top(container, node2, 'A');
+                pb(container);
+            }
+        }
+        start = chunk;
+        chunk = chunk + chunk;
+        //printf("chunk = %d\n", chunk);
+
+
+    }
+    while (container->size_a < container->size_max)
+    {
+        on_top(container, container->max_b, 'B');
+        pa(container);
+        //printf("sort 100\n");
+
+
+
+
+
+    }
+    //ft_lstprint(container->stack_a_head);
+    //ft_lstprint(container->stack_b_head);
+}
+
 int min_or_max(t_package_deal *container, t_dlist *node, char stack)
 {
     t_dlist *max;
