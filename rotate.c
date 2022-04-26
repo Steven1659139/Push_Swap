@@ -6,7 +6,7 @@
 
 void    rotate(t_package_deal *container, char stack)
 {
-    if (stack == 'C')
+    if (stack == 'c')
     {
         if (container->stack_a_head)
             container->stack_a_head = container->stack_a_head->next;
@@ -20,7 +20,7 @@ void    rotate(t_package_deal *container, char stack)
         // ft_lstprint(container->stack_b_head);
         
     }
-    else if (stack == 'A' && container->stack_a_head)
+    else if (stack == 'a' && container->stack_a_head)
     {
         container->stack_a_head = container->stack_a_head->next;
         container->nb_move += 1;
@@ -31,7 +31,7 @@ void    rotate(t_package_deal *container, char stack)
         // ft_lstprint(container->stack_b_head);
 
     }
-    else if (stack == 'B' && container->stack_b_head)
+    else if (stack == 'b' && container->stack_b_head)
     {
         container->stack_b_head = container->stack_b_head->next;
         container->nb_move += 1;
@@ -41,6 +41,7 @@ void    rotate(t_package_deal *container, char stack)
         // printf("Stack B\n");
         // ft_lstprint(container->stack_b_head);
     }
+    update_position(container);
 }
 
 

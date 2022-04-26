@@ -4,7 +4,7 @@ void put_move(t_package_deal *container, char *move)
 {
     if(*move == 's')
         filter_swap(container, *(++move));
-    else if (*move == 's')
+    else if (*move == 'p')
         filter_push(container, *(++move));
     else if (ft_strlen(move) == 2)
         rotate(container, *(++move));

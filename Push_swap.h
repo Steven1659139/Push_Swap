@@ -116,6 +116,12 @@ int		do_move(t_package_deal *container, char *str, int nb, int prev);
 
 void algo(t_package_deal *container);
 
+int get_max(t_package_deal *container, char stack);
+int get_min(t_package_deal *container, char stack);
+int get_node(t_dlist *list, int index);
+int get_bottom(t_dlist *stack);
+int get_top(t_dlist *stack);
+
 
 
 #endif

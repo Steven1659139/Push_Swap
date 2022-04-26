@@ -54,7 +54,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f) (void *));
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 long long		ft_atoi(const char *str);
-int ft_abs(int n);
+int 	ft_abs(int n);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
