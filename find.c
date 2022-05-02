@@ -115,23 +115,3 @@ t_dlist *find_node_bottom(t_package_deal *container, int min, int max, char stac
     }
     return (NULL);
 }
-
-// void    find_pos(t_package_deal *container, t_dlist *node, char stack)
-// {
-//     int i;
-//     t_dlist *start;
-
-//     if (!node)
-//         return ;
-//     if (stack == 'A')
-//         start = container->stack_a_head;
-//     else
-//         start = container->stack_b_head;
-
-//     i = 0;
-//     while (start->next != node)
-//     {
-//         start = start->next;
-//         container->find_pos = ++i;
-//     }
-// }

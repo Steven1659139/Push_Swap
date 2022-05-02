@@ -34,9 +34,9 @@ void    sort3(t_package_deal *container)
             if (((top > mid) && (top < bottom)) || ((top < mid) && (top < bottom)))
                 sa(container);
             else if ((top < mid) && (top > bottom))
-                reverse_rotate(container, 'A');
+                put_move(container, "rra");
             else if ((top > mid) && (top > bottom))
-                rotate(container, 'A');
+                put_move(container, "ra");
         }
 }
 
@@ -55,126 +55,98 @@ void    sort5(t_package_deal *container)
         sort3(container);
         while (container->size_a < container->size_max)
             pa(container);
-
-
     }
-
-
 }
+
+
 
 void    sort100(t_package_deal *container)
 {
-    t_dlist *node1;
-    t_dlist *node2;
-    int pos1;
-    int pos2;
     int chunk;
-    int start;
+    int min_chunk;
+    int max_chunk;
+    t_dlist *node;
 
-    chunk = container->size_a / 5;
-    start = 1;
+    chunk = size_chunk(container);
+    min_chunk = (container->size_max / 2) - chunk;
+    max_chunk = (container->size_max / 2) + chunk;
 
-    //printf("chunk = %d\n", chunk);
+
     while (container->size_a > 0)
     {
-        while (find_node(container, start, chunk, 'A'))
+        if (container->stack_a_head->index >= min_chunk && container->stack_a_head->index <= max_chunk)
+            put_move(container, "pb");
+        if (!(check_chunk(max_chunk, min_chunk, container)))
         {
-            node1 = find_node(container, start, chunk, 'A');
-            pos1 = ft_abs((container->find_pos - (container->size_a / 2)));
-            node2 = find_node_bottom(container, start, chunk, 'A');
-            pos2 = ft_abs((container->find_pos - (container->size_a / 2)));
-
-            if (pos1 > pos2)
-            {
-                if (min_or_max(container, container->stack_a_head, 'B'))
-                    on_top(container, container->min_b, 'B');
-                on_top(container, node1, 'A');
-                pb(container);
-            }
-            else
-            {
-                if (min_or_max(container, container->stack_a_head, 'B'))
-                    on_top(container, container->min_b, 'B'); 
-                on_top(container, node2, 'A');
-                pb(container);
-            }
+            min_chunk -= 15;
+            max_chunk += 15;
         }
-        start = chunk;
-        chunk = chunk + chunk;
-
-
+        if (get_top(container->stack_b_head) < container->size_max / 2)
+            put_move(container, "rb");
+        put_move(container, "ra");
     }
-    while (container->size_a < container->size_max)
+    while(container->size_b > 0)
     {
-        on_top(container, container->max_b, 'B');
-        pa(container);
-        //printf("sort 100\n");
-
-
-
-
-
+        node = find_max(container, 'B');
+        on_top(container, node, 'B');
+        put_move(container, "pa");
     }
-    //ft_lstprint(container->stack_a_head);
-    //ft_lstprint(container->stack_b_head);
 }
 
-void    sort500(t_package_deal *container)
-{
-    t_dlist *node1;
-    t_dlist *node2;
-    int chunk;
-    int start;
+// void    sort500(t_package_deal *container)
+// {
+//     t_dlist *node1;
+//     t_dlist *node2;
+//     int pos1;
+//     int pos2;
+//     int chunk;
+//     int start;
 
-    chunk = container->size_a / 11;
-    start = 1;
+//     chunk = 33;
+//     start = 1;
 
-    //printf("chunk = %d\n", chunk);
-    while (container->size_a > 0)
-    {
-        while (find_node(container, start, chunk, 'A'))
-        {
-            //printf("chunk = %d\n", chunk);            
-            node1 = find_node(container, start, chunk, 'A');
-            container->pos1 = ft_abs((container->find_pos - (container->size_a / 2)));
-            node2 = find_node_bottom(container, start, chunk, 'A');
-            container->pos2 = ft_abs((container->find_pos - (container->size_a / 2)));
+//     while (container->size_a > 0)
+//     {
+//         while (find_node(container, start, chunk, 'A'))
+//         {
+//             node1 = find_node(container, start, chunk, 'A');
+//             pos1 = ft_abs((container->find_pos - (container->size_a / 2)));
+//             node2 = find_node_bottom(container, start, chunk, 'A');
+//             pos2 = ft_abs((container->find_pos - (container->size_a / 2)));
 
-            if (container->pos1 > container->pos2)
-            {
-                if (min_or_max(container, container->stack_a_head, 'B'))
-                    on_top(container, container->min_b, 'B');
-                on_top(container, node1, 'A');
-                pb(container);
-            }
-            else
-            {
-                if (min_or_max(container, container->stack_a_head, 'B'))
-                    on_top(container, container->min_b, 'B'); 
-                on_top(container, node2, 'A');
-                pb(container);
-            }
-        }
-        start = chunk;
-        chunk = chunk + chunk;
-        //printf("chunk = %d\n", chunk);
-
-
-    }
-    while (container->size_a < container->size_max)
-    {
-        on_top(container, container->max_b, 'B');
-        pa(container);
-        //printf("sort 100\n");
+//             if (pos1 > pos2)
+//             {
+//                 if (min_or_max(container, container->stack_a_head, 'B'))
+//                     on_top(container, container->min_b, 'B');
+//                 on_top(container, node1, 'A');
+//                 pb(container);
+//             }
+//             else
+//             {
+//                 if (min_or_max(container, container->stack_a_head, 'B'))
+//                     on_top(container, container->min_b, 'B'); 
+//                 on_top(container, node2, 'A');
+//                 pb(container);
+//             }
+//         }
+//         start = chunk;
+//         chunk = chunk + chunk;
 
 
+//     }
+//     while (container->size_a < container->size_max)
+//     {
+//         on_top(container, container->max_b, 'B');
+//         pa(container);
+//         //printf("sort 100\n");
+
+//     }
+//     printf("nb_move = %d\n", container->nb_move);
+//     //ft_lstprint(container->stack_a_head);
+//     //ft_lstprint(container->stack_b_head);
+// }
 
 
-
-    }
-    //ft_lstprint(container->stack_a_head);
-    //ft_lstprint(container->stack_b_head);
-}
 
 int min_or_max(t_package_deal *container, t_dlist *node, char stack)
 {
@@ -205,11 +177,10 @@ void    on_top(t_package_deal *container, t_dlist *node, char stack)
         while (container->stack_a_head != node)
         {
             update_position(container);
-            //printf("node = %d", node->content);
             if (node->position > (size / 2))
-                reverse_rotate(container, 'A');
+                put_move(container, "rra");
             else
-                rotate(container, 'A');
+                put_move(container, "ra");
         }
     }
     else
@@ -219,44 +190,10 @@ void    on_top(t_package_deal *container, t_dlist *node, char stack)
         {
             update_position(container);
             if (node->position > (size / 2))
-                reverse_rotate(container, 'B');
+                put_move(container, "rrb");
             else
-                rotate(container, 'B');
+                put_move(container, "rb");
         }
     }
 
 }
-
-
-// void    on_top(t_package_deal *container, t_dlist *node, char stack)
-// {
-//     if (!node)
-//         return ;
-//     int size;
-
-//     find_pos(container, node, stack);
-//     if (stack == 'A')
-//     {
-//         size = container->size_a;
-//         while (container->stack_a_head != node)
-//         {
-//             //printf("node = %d", node->content);
-//             if (container->find_pos > (size / 2))
-//                 reverse_rotate(container, 'A');
-//             else
-//                 rotate(container, 'A');
-//         }
-//     }
-//     else
-//     {
-//         size = container->size_b;
-//         while (container->stack_b_head != node)
-//         {
-//             if (container->find_pos > (size / 2))
-//                 reverse_rotate(container, 'B');
-//             else
-//                 rotate(container, 'B');
-//         }
-//     }
-
-// }

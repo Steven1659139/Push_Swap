@@ -1,80 +1,33 @@
 #include "Push_swap.h"
 
-int     in_stack(t_package_deal *container, int min)
+int size_chunk(t_package_deal *container)
 {
-    int res;//
+    container->chunk_size = 0;
 
-    container->temp = container->stack_b_head;//
-    res = 0;//
-    while (container->temp && !res)//
-    {
-        if(container->temp->content >= min)//
-            res = 1;//
-        container->temp = container->temp->next;//
-        //printf("in_stack\n");
-    }
-    return (res);
+    if (container->size_max == 100)
+        container->chunk_size = 15;
+    else if (container->size_max == 500)
+        container->chunk_size = 33;
+    else
+        container->chunk_size = container->size_max / 2;
+
+    return (container->chunk_size);
 }
 
-int move_max(t_package_deal *container, int max_index)
+int check_chunk(int max, int min, t_package_deal *container)
 {
+    container->temp = container->stack_a_head;
     int res;
 
     res = 0;
-    if (max_index == 1)//
+
+    if (!container->temp)
+        return (0);
+    while (container->temp->next != container->stack_a_head && !res)
     {
-        put_move(container, "pa");//
-        if (container->size_a > 1 && get_top(container->stack_a_head) > get_node(container->stack_a_head, 2))//
-            put_move(container, "sa");//
-        res = 1;//
+        if(container->temp->index <= max && container->temp->index >= min)
+            res = 1;
+        container->temp = container->temp->next;
     }
-    return (res);//
-}
-
-void    order_chunk(t_package_deal *container, int min)
-{
-    int max_index;//
-    int mid_index;//
-    int prev;//
-
-    prev = 0;//
-
-    while (container->size_b && in_stack(container, min))//
-    {
-        max_index = get_max(container, 'B');//
-        if (!move_max(container, max_index))//
-        //printf("order_chunk\n");
-        {
-            mid_index = container->size_b / 2;//
-            if (container->size_b % 2 == 0)
-                mid_index++;
-            if (mid_index >= max_index)
-                prev = do_move(container, "rb", max_index - 1, max_index - 1);
-            else if (mid_index < max_index)
-                prev = do_move(container, "rrb", container->size_b - max_index + 1, max_index - 1);
-        }
-    }
-}
-
-void    chunker(t_package_deal *container)
-{
-    int count;
-    int nb_chunk;
-    int flag;
-
-    container->chunk_size = size_chunk(container);//
-    nb_chunk = container->size_max / container->chunk_size;//
-    if (container->size_max % container->chunk_size)//
-        nb_chunk++;//
-    count = 1;//
-    flag = 0;//
-    while (count <= nb_chunk / 2 + 1)//
-    {
-        //printf("count = %d\n", count);
-        flag = move_chunk(container, count, flag);//
-        count++;//
-    }
-    count = nb_chunk + 1;//
-    while (count-- > 0)//
-        order_chunk(container, container->chunk_size * (count - 1));
+    return (res);
 }

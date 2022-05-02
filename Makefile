@@ -1,16 +1,12 @@
 NAME = push_swap
 
-SRCS = push_swap.c lstnew_int.c lstlast.c  parsing.c rotate.c lst_addback.c ft_lstadd.c \
-	ft_lstlen.c ft_countword.c push.c swap.c reverse_rotate.c sort.c update.c init.c find.c \
-	filter.c make_chunk.c move_chunk.c chunk.c algo.c get.c
+SRC = push_swap.c lstnew_int.c lstlast.c  parsing.c rotate.c lst_addback.c ft_lstadd.c ft_lstlen.c ft_countword.c push.c swap.c reverse_rotate.c sort.c update.c init.c find.c chunk.c filter.c algo.c get.c \
+		convert.c
 
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra -g
 
-OBJS = $(SRCS:.c=.o)
-
-.c.o:
-					${CC} ${CFLAGS}  -c $< -o ${<:.c=.o} 
+OBJS = $(SRC:.c=.o)
 
 all: $(NAME)
 

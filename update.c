@@ -36,7 +36,7 @@ void    update_position(t_package_deal *container)
     
     i = 1;
     ref = container->stack_a_head;
-    while (i <= container->size_a)
+    while (i <= container->size_a && container->stack_a_head)
     {
         ref->position = i;
         ref = ref->next;
@@ -44,7 +44,7 @@ void    update_position(t_package_deal *container)
     }
     ref = container->stack_b_head;
     i = 1;
-    while (i <= container->size_b)
+    while (i <= container->size_b && container->stack_b_head)
     {
         ref->position = i;
         ref = ref->next;

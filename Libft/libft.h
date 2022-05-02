@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -22,8 +23,17 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct s_dlist
+{
+	int			content;
+	int			index;
+	int			position;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}					t_dlist;
+
 // Couleur
-# define WHITE "\e[0;37m"
+
 # define RED "\e[0;31m"
 # define GREEN "\e[0;32m"
 # define YELLOW "\e[0;33m"
@@ -45,8 +55,8 @@ void	ft_puterror(char *error_message);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
 void    yo_its_wrong(char *str);
+void	ft_putnbr_fd(int n, int fd);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
@@ -54,7 +64,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f) (void *));
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 long long		ft_atoi(const char *str);
-int 	ft_abs(int n);
+int ft_abs(int n);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

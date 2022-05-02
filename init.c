@@ -2,7 +2,6 @@
 
 void    set_index(t_package_deal *container)
 {   
-    printf("set index\n");
     t_dlist *ptr_ref;
     t_dlist *ptr_check;
     int     min;
@@ -15,7 +14,6 @@ void    set_index(t_package_deal *container)
         ptr_check = ptr_ref->next;
         min = ptr_ref->content;
         container->temp = ptr_ref;
-        //printf("ptr_ref = %d\nptr_check = %d\nmin = %d\n", ptr_ref->content, ptr_check->content, min);
         while(ptr_check != ptr_ref)
         {
             if ((ptr_check->content < min) && !(ptr_check->index))

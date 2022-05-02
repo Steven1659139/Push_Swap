@@ -2,7 +2,6 @@
 
 int	int_checker(long long nb)
 {
-	//printf("nb = %lld\n", nb);
 	if (nb > INT_MAX || nb < INT_MIN)
 		return (0);
 	return (1);
@@ -20,7 +19,6 @@ int twin_checker(t_dlist **lst)
 		ptr_check = ptr_ref->next;
 		while(ptr_check != *lst)
 		{
-			//printf("ref_content = %d\ncheck_content = %d\n", ptr_ref->content, ptr_check->content);
 			if (ptr_ref->content == ptr_check->content)
 				return (0);
 			ptr_check = ptr_check->next;
@@ -46,13 +44,13 @@ int	check_input(char **input)
 		while (i < (int)ft_strlen(input[j]))
 		{
 			if ((!ft_isdigit(input[j][i]) && !(' ' == input[j][i]) && !(input[j][i] == '-')))
-				return (0);
+				yo_its_wrong("Toutes les entrées doivent êtres composées de chiffres.");
 			if (ft_isdigit(input[j][i]))	
 				nb++;
 			if (input[j][i] == '-')
 				neg++;
 				if (neg > 1)
-					return (0);
+					yo_its_wrong("Il ne peut pas avoir plus d'un signe '-' devant un nombre.");
 			i++;
 		}
 		j++;
@@ -60,6 +58,6 @@ int	check_input(char **input)
 		neg = 0;
 	}
 	if (nb < 1)
-		return (0);
+		yo_its_wrong("Il n'y a rien à trier, j'imagine qu'on peut le considérer en ordre.");
 	return (1);
 }

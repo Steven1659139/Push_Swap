@@ -9,7 +9,10 @@ void put_move(t_package_deal *container, char *move)
     else if (ft_strlen(move) == 2)
         rotate(container, *(++move));
     else
+    {
+        move++;
         reverse_rotate(container, *(++move));
+    }
 }
 
 void filter_push(t_package_deal *container, char c)

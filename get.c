@@ -2,6 +2,8 @@
 
 int get_top(t_dlist *stack)
 {
+    if (!stack)
+        return (0);
     return (stack->index);
 }
 
