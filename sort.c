@@ -48,8 +48,8 @@ void    sort5(t_package_deal *container)
 
         while (container->size_a > 3)
         {
-            min = find_min(container, 'A');
-            on_top(container, min, 'A');
+            min = find_min(container, 'a');
+            on_top(container, min, 'a');
             pb(container);
         }
         sort3(container);
@@ -79,23 +79,23 @@ void    sort100(t_package_deal *container)
             put_move(container, "pb");
         if (!(check_chunk(max_chunk, min_chunk, container)))
         {
-            min_chunk -= 15;
-            max_chunk += 15;
+            min_chunk -= chunk;
+            max_chunk += chunk;
         }
         if (get_top(container->stack_b_head) < container->size_max / 2)
             put_move(container, "rb");
-        node = find_node(container, min_chunk, max_chunk, 'A');
-        on_top(container, node, 'A');
+        node = find_node(container, min_chunk, max_chunk, 'a');
+        on_top(container, node, 'a');
         //put_move(container, "ra");
     }
     while(container->size_b > 0)
     {
-        min = get_min(container, 'A');
+        min = get_min(container, 'a');
         //printf("min = %d\n", min);
         //node = get_next_node(container, min);
-        node = find_max(container, 'B');
+        node = find_max(container, 'b');
         //printf("node = %d\n", node->index);
-        on_top(container, node, 'B');
+        on_top(container, node, 'b');
 
 
         put_move(container, "pa");
@@ -124,25 +124,25 @@ void    sort100(t_package_deal *container)
 
 //     while (container->size_a > 0)
 //     {
-//         while (find_node(container, start, chunk, 'A'))
+//         while (find_node(container, start, chunk, 'a'))
 //         {
-//             node1 = find_node(container, start, chunk, 'A');
+//             node1 = find_node(container, start, chunk, 'a');
 //             pos1 = ft_abs((container->find_pos - (container->size_a / 2)));
-//             node2 = find_node_bottom(container, start, chunk, 'A');
+//             node2 = find_node_bottom(container, start, chunk, 'a');
 //             pos2 = ft_abs((container->find_pos - (container->size_a / 2)));
 
 //             if (pos1 > pos2)
 //             {
-//                 if (min_or_max(container, container->stack_a_head, 'B'))
-//                     on_top(container, container->min_b, 'B');
-//                 on_top(container, node1, 'A');
+//                 if (min_or_max(container, container->stack_a_head, 'b'))
+//                     on_top(container, container->min_b, 'b');
+//                 on_top(container, node1, 'a');
 //                 pb(container);
 //             }
 //             else
 //             {
-//                 if (min_or_max(container, container->stack_a_head, 'B'))
-//                     on_top(container, container->min_b, 'B'); 
-//                 on_top(container, node2, 'A');
+//                 if (min_or_max(container, container->stack_a_head, 'b'))
+//                     on_top(container, container->min_b, 'b'); 
+//                 on_top(container, node2, 'a');
 //                 pb(container);
 //             }
 //         }
@@ -153,7 +153,7 @@ void    sort100(t_package_deal *container)
 //     }
 //     while (container->size_a < container->size_max)
 //     {
-//         on_top(container, container->max_b, 'B');
+//         on_top(container, container->max_b, 'b');
 //         pa(container);
 //         //printf("sort 100\n");
 
@@ -188,7 +188,7 @@ void    on_top(t_package_deal *container, t_dlist *node, char stack)
     if (!node)
         return ;
 
-    if (stack == 'A')
+    if (stack == 'a')
     {
         size = container->size_a;
         while (container->stack_a_head != node)
@@ -228,7 +228,7 @@ void    replace(t_package_deal *container)
         if (container->stack_a_head->index > container->stack_a_head->next->index )
             put_move(container, "sa");
     }
-    if (container->stack_b_head->index == get_max(container,'B') - 1)
+    if (container->stack_b_head->index == get_max(container,'b') - 1)
         put_move(container, "pa");
 
 

@@ -31,7 +31,7 @@ void    sb(t_package_deal *container)
     if (container->size_b > 0)
     {
         if (container->size_b == 2)
-            rotate(container, 'B');
+            rotate(container, 'b');
         else
         {
             container->temp = container->stack_b_head->next->next;

@@ -4,12 +4,10 @@ int size_chunk(t_package_deal *container)
 {
     container->chunk_size = 0;
 
-    if (container->size_max == 100)
+    if (container->size_max <= 100)
         container->chunk_size = 15;
-    else if (container->size_max == 500)
+    else if (container->size_max > 100)
         container->chunk_size = 33;
-    else
-        container->chunk_size = container->size_max / 2;
 
     return (container->chunk_size);
 }

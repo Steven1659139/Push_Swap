@@ -16,9 +16,9 @@ int get_max(t_package_deal *container, char stack)
 {
     int max;
 
-    if (stack == 'A' && !container->stack_a_head)
+    if (stack == 'a' && !container->stack_a_head)
         return (0);
-    if (stack == 'B' && !container->stack_b_head)
+    if (stack == 'b' && !container->stack_b_head)
         return (0);
 
     max = find_max(container, stack)->index;
@@ -30,9 +30,9 @@ int get_min(t_package_deal *container, char stack)
 {
     int min;
 
-    if (stack == 'A' && !container->stack_a_head)
+    if (stack == 'a' && !container->stack_a_head)
         return (0);
-    if (stack == 'B' && !container->stack_b_head)
+    if (stack == 'b' && !container->stack_b_head)
         return (0);
 
     min = find_min(container, stack)->index;
@@ -63,13 +63,13 @@ t_dlist *get_next_node(t_package_deal *container, int min)
 
     count++;
 
-    node1 = find_node(container, min, min + 3, 'B');
-    node2 = find_node_bottom(container, min, min + 3, 'B');
+    node1 = find_node(container, min, min + 3, 'b');
+    node2 = find_node_bottom(container, min, min + 3, 'b');
 
     update_position(container);
 
     if ((!node1 || !node2) || count < 2)
-        return (find_max(container, 'B'));
+        return (find_max(container, 'b'));
 
     if (node1->position < node2->position)
         return (node1);

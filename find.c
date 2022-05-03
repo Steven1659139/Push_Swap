@@ -7,13 +7,13 @@ t_dlist *find_min(t_package_deal *container, char stack)
     t_dlist *min;
 
 
-    if (stack == 'A' && container->stack_a_head)
+    if (stack == 'a' && container->stack_a_head)
     {
         end = container->stack_a_head;
         ref = container->stack_a_head->next;
         min = container->stack_a_head;
     }
-    else if (stack == 'B' && container->stack_b_head)
+    else if (stack == 'b' && container->stack_b_head)
     {
         end = container->stack_b_head;
         ref = container->stack_b_head->next;
@@ -38,13 +38,13 @@ t_dlist *find_max(t_package_deal *container, char stack)
     t_dlist *max;
 
 
-    if (stack == 'A' && container->stack_a_head)
+    if (stack == 'a' && container->stack_a_head)
     {
         end = container->stack_a_head;
         ref = container->stack_a_head->next;
         max = container->stack_a_head;
     }
-    else if (stack == 'B' && container->stack_b_head)
+    else if (stack == 'b' && container->stack_b_head)
     {
         end = container->stack_b_head;
         ref = container->stack_b_head->next;
@@ -66,7 +66,7 @@ t_dlist *find_node(t_package_deal *container, int min, int max, char stack)
     t_dlist *end;
     t_dlist *node;
 
-    if (stack == 'A')
+    if (stack == 'a')
     {
         end = container->stack_a_head;
         node = container->stack_a_head;
@@ -96,7 +96,7 @@ t_dlist *find_node_bottom(t_package_deal *container, int min, int max, char stac
     t_dlist *node;
 
     i = 1;
-    if (stack == 'A')
+    if (stack == 'a')
     {
         end = container->stack_a_head;
         node = container->stack_a_head;
