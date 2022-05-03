@@ -84,7 +84,9 @@ void    sort100(t_package_deal *container)
         }
         if (get_top(container->stack_b_head) < container->size_max / 2)
             put_move(container, "rb");
-        put_move(container, "ra");
+        node = find_node(container, min_chunk, max_chunk, 'A');
+        on_top(container, node, 'A');
+        //put_move(container, "ra");
     }
     while(container->size_b > 0)
     {
