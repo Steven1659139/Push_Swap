@@ -5,7 +5,7 @@ void    sa(t_package_deal *container)
     if (container->size_a > 0)
     {
         if (container->size_a == 2)
-            rotate(container, 'A');
+            put_move(container, "ra");
         else
         {
             container->temp = container->stack_a_head->next->next;

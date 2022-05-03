@@ -65,6 +65,7 @@ void    sort100(t_package_deal *container)
     int chunk;
     int min_chunk;
     int max_chunk;
+    int min;
     t_dlist *node;
 
     chunk = size_chunk(container);
@@ -87,11 +88,25 @@ void    sort100(t_package_deal *container)
     }
     while(container->size_b > 0)
     {
+        min = get_min(container, 'A');
+        //printf("min = %d\n", min);
+        //node = get_next_node(container, min);
         node = find_max(container, 'B');
+        //printf("node = %d\n", node->index);
         on_top(container, node, 'B');
+
+
         put_move(container, "pa");
+        if (container->stack_a_head)
+        {
+            if (container->stack_a_head->index > container->stack_a_head->next->index)
+                put_move(container, "sa");
+        }
+        //put_move(container, "pa");
     }
 }
+
+
 
 // void    sort500(t_package_deal *container)
 // {
@@ -177,6 +192,7 @@ void    on_top(t_package_deal *container, t_dlist *node, char stack)
         while (container->stack_a_head != node)
         {
             update_position(container);
+
             if (node->position > (size / 2))
                 put_move(container, "rra");
             else
@@ -189,11 +205,30 @@ void    on_top(t_package_deal *container, t_dlist *node, char stack)
         while (container->stack_b_head != node)
         {
             update_position(container);
+            replace(container);
             if (node->position > (size / 2))
                 put_move(container, "rrb");
             else
                 put_move(container, "rb");
         }
     }
+
+}
+
+void    replace(t_package_deal *container)
+{
+    t_dlist *node;
+
+    node = container->stack_a_head;
+    
+    if (container->stack_a_head)
+    {
+        if (container->stack_a_head->index > container->stack_a_head->next->index )
+            put_move(container, "sa");
+    }
+    if (container->stack_b_head->index == get_max(container,'B') - 1)
+        put_move(container, "pa");
+
+
 
 }

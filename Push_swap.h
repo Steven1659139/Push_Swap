@@ -100,7 +100,11 @@ int size_chunk(t_package_deal *container);
 int check_chunk(int max, int min, t_package_deal *container);
 
 int get_top(t_dlist *stack);
+int get_max(t_package_deal *container, char stack);
+int get_min(t_package_deal *container, char stack);
+t_dlist *get_next_node(t_package_deal *container, int min);
 
+void    replace(t_package_deal *container);
 void    convert(t_package_deal *container, char *argv);
 void    convert_sep(t_package_deal *container, char **argv);
 #endif
