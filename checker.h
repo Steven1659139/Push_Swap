@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstnew_int.c                                       :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slavoie <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 15:49:16 by slavoie           #+#    #+#             */
-/*   Updated: 2022/05/04 15:49:19 by slavoie          ###   ########.fr       */
+/*   Created: 2022/05/05 21:09:03 by slavoie           #+#    #+#             */
+/*   Updated: 2022/05/05 21:09:05 by slavoie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-/* modifier nom et replacer dans la libft */
+# include "Push_swap.h"
+# include "./get_next_line/get_next_line.h"
 
-t_dlist	*lstnew_dbl(int content)
-{
-	t_dlist	*new;
+void	check_move(t_stacks *container, char **argv, int argc);
+char	*read_move(int fd);
 
-	new = (t_dlist *)malloc(sizeof(*new));
-	if (!new)
-		return (0);
-	new -> content = content;
-	new -> next = new;
-	new -> prev = new;
-	return (new);
-}
+#endif

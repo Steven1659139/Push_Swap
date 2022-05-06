@@ -1,27 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slavoie <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/03 17:11:43 by slavoie           #+#    #+#             */
+/*   Updated: 2022/05/03 17:13:13 by slavoie          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Push_swap.h"
 
-void    reverse_rotate(t_package_deal *container, char stack)
+void	reverse_rotate(t_stacks *container, char stack)
 {
-        if (stack == 'c')
-    {
-        if (container->stack_a_head)
-            container->stack_a_head = container->stack_a_head->prev;
-        if (container->stack_b_head)
-            container->stack_b_head = container->stack_b_head->prev;
-        container->nb_move += 1;
-        ft_putstr_fd("rrr\n", 1);
-    }
-    else if (stack == 'a' && container->stack_a_head)
-    {
-        container->stack_a_head = container->stack_a_head->prev;
-        container->nb_move += 1;
-        ft_putstr_fd("rra\n", 1);
-    }
-    else if (stack == 'b' && container->stack_b_head)
-    {
-        container->stack_b_head = container->stack_b_head->prev;
-        container->nb_move += 1;
-        ft_putstr_fd("rrb\n", 1);
-    }
-    
+	if (stack == 'c')
+	{
+		if (container->a_head)
+			container->a_head = container->a_head->prev;
+		if (container->b_head)
+			container->b_head = container->b_head->prev;
+		container->nb_move += 1;
+		ft_putstr_fd("rrr\n", 1);
+	}
+	else if (stack == 'a' && container->a_head)
+	{
+		container->a_head = container->a_head->prev;
+		container->nb_move += 1;
+		ft_putstr_fd("rra\n", 1);
+	}
+	else if (stack == 'b' && container->b_head)
+	{
+		container->b_head = container->b_head->prev;
+		container->nb_move += 1;
+		ft_putstr_fd("rrb\n", 1);
+	}
 }

@@ -1,65 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slavoie <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/03 17:46:22 by slavoie           #+#    #+#             */
+/*   Updated: 2022/05/03 17:47:00 by slavoie          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Push_swap.h"
 
-void    pb(t_package_deal *container)
-{   
-    if (container->size_a > 0)
-    {
-        if (!container->stack_b_head)
-        {
-            container->temp = container->stack_a_head->next;
-            container->stack_b_head = container->stack_a_head;
-            container->stack_a_head->next->prev = container->stack_a_head->prev;
-            container->stack_a_head->prev->next = container->stack_a_head->next;
-            container->stack_b_head->next = container->stack_b_head;
-            container->stack_b_head->prev = container->stack_b_head;
-            container->stack_a_head = container->temp;
-        } 
-        else
-        {
-            container->temp = container->stack_a_head->next;
-            container->stack_a_head->prev->next = container->stack_a_head->next;
-            container->stack_a_head->next->prev = container->stack_a_head->prev;
-            container->stack_a_head->next = container->stack_b_head;
-            container->stack_a_head->prev = container->stack_b_head->prev;
-            container->stack_b_head->prev->next = container->stack_a_head;
-            container->stack_b_head->prev = container->stack_a_head;
-            container->stack_b_head = container->stack_a_head;
-            container->stack_a_head = container->temp;
-        }
-        update_stack_B(container);
-        ft_putstr_fd("pb\n", 1); 
-    }
+void	pb(t_stacks *container)
+{
+	if (container->size_a > 0)
+	{
+		if (!container->b_head)
+			first_call_b(container);
+		else
+		{
+			container->temp = container->a_head->next;
+			container->a_head->prev->next = container->a_head->next;
+			container->a_head->next->prev = container->a_head->prev;
+			container->a_head->next = container->b_head;
+			container->a_head->prev = container->b_head->prev;
+			container->b_head->prev->next = container->a_head;
+			container->b_head->prev = container->a_head;
+			container->b_head = container->a_head;
+			container->a_head = container->temp;
+		}
+		update_stack_b(container);
+		ft_putstr_fd("pb\n", 1);
+	}
 }
 
-void    pa(t_package_deal *container)
-{   
-    if (container->size_b > 0)
-    {
-        if (!container->stack_a_head)
-        {
-            container->temp = container->stack_b_head->next;
-            container->stack_a_head = container->stack_b_head;
-            container->stack_b_head->next->prev = container->stack_b_head->prev;
-            container->stack_b_head->prev->next = container->stack_b_head->next;
-            container->stack_a_head->next = container->stack_a_head;
-            container->stack_a_head->prev = container->stack_a_head;
-            container->stack_b_head = container->temp;
-        }
-        else
-        {
-            container->temp = container->stack_b_head->next;
-            container->stack_b_head->prev->next = container->stack_b_head->next;
-            container->stack_b_head->next->prev = container->stack_b_head->prev;
-            container->stack_b_head->next = container->stack_a_head;
-            container->stack_b_head->prev = container->stack_a_head->prev;
-            container->stack_a_head->prev->next = container->stack_b_head;
-            container->stack_a_head->prev = container->stack_b_head;
-            container->stack_a_head = container->stack_b_head;
-            container->stack_b_head = container->temp;
-            container->temp = container->stack_b_head->next;
-        }
-        update_stack_A(container);
-        ft_putstr_fd("pa\n", 1);
-    }
+void	pa(t_stacks *container)
+{
+	if (container->size_b > 0)
+	{
+		if (!container->a_head)
+			first_call_a(container);
+		else
+		{
+			container->temp = container->b_head->next;
+			container->b_head->prev->next = container->b_head->next;
+			container->b_head->next->prev = container->b_head->prev;
+			container->b_head->next = container->a_head;
+			container->b_head->prev = container->a_head->prev;
+			container->a_head->prev->next = container->b_head;
+			container->a_head->prev = container->b_head;
+			container->a_head = container->b_head;
+			container->b_head = container->temp;
+			container->temp = container->b_head->next;
+		}
+		update_stack_a(container);
+		ft_putstr_fd("pa\n", 1);
+	}
 }
 
+void	first_call_a(t_stacks *container)
+{
+	container->temp = container->b_head->next;
+	container->a_head = container->b_head;
+	container->b_head->next->prev = container->b_head->prev;
+	container->b_head->prev->next = container->b_head->next;
+	container->a_head->next = container->a_head;
+	container->a_head->prev = container->a_head;
+	container->b_head = container->temp;
+}
+
+void	first_call_b(t_stacks *container)
+{
+	container->temp = container->a_head->next;
+	container->b_head = container->a_head;
+	container->a_head->next->prev = container->a_head->prev;
+	container->a_head->prev->next = container->a_head->next;
+	container->b_head->next = container->b_head;
+	container->b_head->prev = container->b_head;
+	container->a_head = container->temp;
+}

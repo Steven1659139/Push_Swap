@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slavoie <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/04 15:48:52 by slavoie           #+#    #+#             */
+/*   Updated: 2022/05/04 15:48:55 by slavoie          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Push_swap.h"
 
 int	int_checker(long long nb)
@@ -7,17 +19,16 @@ int	int_checker(long long nb)
 	return (1);
 }
 
-int twin_checker(t_dlist **lst)
+int	twin_checker(t_dlist **lst)
 {
-	t_dlist *ptr_ref;
-	t_dlist *ptr_check;
+	t_dlist	*ptr_ref;
+	t_dlist	*ptr_check;
 
 	ptr_ref = *lst;
-
-	while(ptr_ref->next	!= *lst)
+	while (ptr_ref->next != *lst)
 	{
 		ptr_check = ptr_ref->next;
-		while(ptr_check != *lst)
+		while (ptr_check != *lst)
 		{
 			if (ptr_ref->content == ptr_check->content)
 				return (0);
@@ -30,34 +41,39 @@ int twin_checker(t_dlist **lst)
 
 int	check_input(char **input)
 {
-	int i;
 	int	j;
 	int	nb;
-	int neg;
 
-	neg = 0;
-	i = 0;
-	j = 0;
 	nb = 0;
+	j = 0;
 	while (input[j] != NULL)
-	{
-		while (i < (int)ft_strlen(input[j]))
-		{
-			if ((!ft_isdigit(input[j][i]) && !(' ' == input[j][i]) && !(input[j][i] == '-')))
-				yo_its_wrong("Toutes les entrées doivent êtres composées de chiffres.");
-			if (ft_isdigit(input[j][i]))	
-				nb++;
-			if (input[j][i] == '-')
-				neg++;
-				if (neg > 1)
-					yo_its_wrong("Il ne peut pas avoir plus d'un signe '-' devant un nombre.");
-			i++;
-		}
-		j++;
-		i = 0;
-		neg = 0;
-	}
-	if (nb < 1)
-		yo_its_wrong("Il n'y a rien à trier, j'imagine qu'on peut le considérer en ordre.");
+		check_char(input, j++);
 	return (1);
+}
+
+int	check_char(char **input, int j)
+{
+	int	i;
+	int	neg;
+	int	nb;
+
+	nb = 0;
+	i = 0;
+	neg = 0;
+	while (i < (int)ft_strlen(input[j]))
+	{
+		if ((!ft_isdigit(input[j][i]) \
+				&& !(' ' == input[j][i]) && !(input[j][i] == '-')))
+			yo_its_wrong("Toutes les entrées doivent \
+			êtres composées de chiffres.");
+		if (ft_isdigit(input[j][i]))
+			nb++;
+		if (input[j][i] == '-')
+			neg++;
+		if (neg > 1)
+			yo_its_wrong("Il ne peut pas \
+			y avoir plus d'un signe '-' devant un nombre.");
+		i++;
+	}
+	return (nb);
 }

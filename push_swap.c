@@ -6,19 +6,17 @@
 /*   By: slavoie <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:25:04 by slavoie           #+#    #+#             */
-/*   Updated: 2022/04/20 15:08:33 by slavoie          ###   ########.fr       */
+/*   Updated: 2022/05/05 21:05:38 by slavoie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_package_deal		*container;
+	t_stacks		*container;
 
-	container = malloc(sizeof(t_package_deal));
+	container = malloc(sizeof(t_stacks));
 	argv++;
 	if (argc > 1 && check_input(argv))
 	{
@@ -35,6 +33,4 @@ int main(int argc, char **argv)
 			}
 		}
 	}
-	else
-		yo_its_wrong("Il n'y a rien à trier, j'imagine qu'on peut le considérer en ordre.");
 }
