@@ -35,6 +35,7 @@ void	ft_lstprint(t_dlist *first);
 void	convert(t_stacks *container, char *argv);
 void	convert_sep(t_stacks *container, char **argv);
 int		check_char(char **input, int j);
+void	table_flip(char **tab);
 // Fonction de double link liste
 
 t_dlist	*lstnew_dbl(int content);

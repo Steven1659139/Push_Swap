@@ -1,12 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slavoie <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/05 21:22:53 by slavoie           #+#    #+#             */
+/*   Updated: 2022/05/05 21:22:56 by slavoie          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"Push_swap.h"
 
 void	algo(t_stacks *container)
 {
-	if (container->size_max <= 5)
-		sort5(container);
-	else
-		universal_sort(container);
-	free(container);
+	if (!check_sort(container, container->size_max))
+	{
+		if (container->size_max <= 5)
+			sort5(container);
+		else
+			universal_sort(container);
+	}
 }
 
 void	on_top(t_stacks *container, t_dlist *node, char stack)
@@ -15,7 +29,6 @@ void	on_top(t_stacks *container, t_dlist *node, char stack)
 
 	if (!node)
 		return ;
-
 	if (stack == 'a')
 	{
 		size = container->size_a;

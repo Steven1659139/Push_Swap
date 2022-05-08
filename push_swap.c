@@ -17,6 +17,8 @@ int	main(int argc, char **argv)
 	t_stacks		*container;
 
 	container = malloc(sizeof(t_stacks));
+	if (!*argv)
+		exit(0);
 	argv++;
 	if (argc > 1 && check_input(argv))
 	{
@@ -24,13 +26,18 @@ int	main(int argc, char **argv)
 			if (argc == 2)
 			{
 				convert(container, *argv);
+				//ft_lstprint(container->a_head);
 				algo(container);
 			}
 			else
 			{
 				convert_sep(container, argv);
+				//ft_lstprint(container->a_head);
 				algo(container);
 			}
+			//ft_lstprint(container->a_head);
 		}
 	}
+	ft_lstclear(&(container->a_head), &free);
+	free(container);
 }

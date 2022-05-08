@@ -18,9 +18,9 @@ HDRS = libft.h
 
 all: $(NAME)
 
-$(NAME):
-	@gcc -c -Wall -Wextra -Werror -I $(HDRS) $(SRC) 
-	@ar rc $(NAME) $(OBJS)
+$(NAME): 
+	@gcc -c -Wall -Wextra -Werror -I $(HDRS) $(SRC) $(BONUS)
+	@ar rc $(NAME) $(OBJS) $(OBJS_BONUS)
 	@ranlib $(NAME)
 
 bonus:

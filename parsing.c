@@ -23,8 +23,8 @@ int	twin_checker(t_dlist **lst)
 {
 	t_dlist	*ptr_ref;
 	t_dlist	*ptr_check;
-
 	ptr_ref = *lst;
+	
 	while (ptr_ref->next != *lst)
 	{
 		ptr_check = ptr_ref->next;
@@ -56,23 +56,23 @@ int	check_char(char **input, int j)
 	int	i;
 	int	neg;
 	int	nb;
+	int nb_word;
 
 	nb = 0;
 	i = 0;
 	neg = 0;
+	nb_word = count_word(*input, ' ');
 	while (i < (int)ft_strlen(input[j]))
 	{
 		if ((!ft_isdigit(input[j][i]) \
-				&& !(' ' == input[j][i]) && !(input[j][i] == '-')))
-			yo_its_wrong("Toutes les entrées doivent \
-			êtres composées de chiffres.");
+				&& !(' ' == input[j][i]) && !(input[j][i] == '-') && !(input[j][i] == '\t')))
+			yo_its_wrong();
 		if (ft_isdigit(input[j][i]))
 			nb++;
 		if (input[j][i] == '-')
 			neg++;
-		if (neg > 1)
-			yo_its_wrong("Il ne peut pas \
-			y avoir plus d'un signe '-' devant un nombre.");
+		if (nb_word < neg || (!ft_isdigit(input[j][i + 1]) && input[j][i] == '-'))
+			yo_its_wrong();
 		i++;
 	}
 	return (nb);

@@ -3,14 +3,14 @@ BONUS_NAME = checker
 
 MAIN = push_swap.c
 
-SRC =  lstnew_int.c lstlast.c  parsing.c rotate.c lst_addback.c ft_lstadd.c ft_lstlen.c push.c swap.c reverse_rotate.c sort.c update.c init.c find.c chunk.c filter.c algo.c get.c \
+SRC =  lstnew_int.c lstlast.c  parsing.c rotate.c lst_addback.c ft_lstadd.c ft_lstlen.c push.c swap.c reverse_rotate.c sort.c update.c init.c find.c chunk.c filter.c algo.c get.c\
 		convert.c 
 
 BONUS = checker.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 
 
 CC = gcc
-CFLAGS = -Werror -Wall -Wextra 
+CFLAGS = -Werror -Wall -Wextra -g
 
 OBJS = $(SRC:.c=.o)
 MAIN_OBJS = $(MAIN:.c=.o)

@@ -27,7 +27,7 @@ char	*read_move(int fd)
 
 void	check_move(t_stacks *container, char **argv, int argc)
 {
-	char *move;
+	char	*move;
 
 	if (argc > 1 && check_input(++argv))
 	{

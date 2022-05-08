@@ -12,6 +12,18 @@
 
 #include "Push_swap.h"
 
+
+void	table_flip(char **tab)
+{
+	int i;
+
+	i = -1;
+
+	while (tab[++i])
+		free(tab[i]);
+	free(tab);
+}
+
 void	convert(t_stacks *container, char *argv)
 {
 	char		**tab;
@@ -21,18 +33,20 @@ void	convert(t_stacks *container, char *argv)
 
 	i = 0;
 	tab = ft_split(argv, ' ');
+	if (!tab)
+		exit(0);
 	while (tab[i])
 	{
 		inter = ft_atoi(tab[i]);
 		if (!int_checker(inter))
-			yo_its_wrong("Les nombres doivent tenir dans un int.");
+			yo_its_wrong("Les nombres doivent tenir dans un int.\n");
 		lstadd(&stack_a, lstnew_dbl(inter));
 		container->size_a += 1;
 		i++;
 	}
-	free(tab);
+	table_flip(tab);
 	if (!twin_checker(&stack_a))
-		yo_its_wrong("Il ne peut pas y avoir de doublon.");
+		yo_its_wrong("Il ne peut pas y avoir de doublon.\n");
 	container->a_head = stack_a;
 	container->size_max = container->size_a;
 	set_index(container);
@@ -50,13 +64,15 @@ void	convert_sep(t_stacks *container, char **argv)
 	{
 		inter = ft_atoi(argv[i]);
 		if (!int_checker(inter))
-			yo_its_wrong("Les nombres doivent tenir dans un int.");
+			yo_its_wrong("Les nombres doivent tenir dans un int.\n");
+		if (ft_strchr(argv[i], ' '))
+			yo_its_wrong();
 		lstadd(&stack_a, lstnew_dbl(inter));
 		i++;
 		container->size_a += 1;
 	}
 	if (!twin_checker(&stack_a))
-		yo_its_wrong("Il ne peut pas y avoir de doublon.");
+		yo_its_wrong("Il ne peut pas y avoir de doublon.\n");
 	container->a_head = stack_a;
 	container->size_max = container->size_a;
 	set_index(container);
