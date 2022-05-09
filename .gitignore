@@ -1,0 +1,5 @@
+*.dSYM
+.DS_Store
+a.out
+visualizer
+test_3_arg.sh
