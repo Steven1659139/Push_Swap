@@ -80,7 +80,7 @@ void	universal_sort(t_stacks *cont)
 	max_chk = (cont->size_max / 2) + chunk;
 	while (cont->size_a > 0)
 	{
-		if (cont->a_head->index >= min_chk && cont->a_head->index <= max_chk)
+		if ((cont->a_head->index >= min_chk && cont->a_head->index <= max_chk))
 			put_move(cont, "pb");
 		if (!(check_chunk(max_chk, min_chk, cont)))
 		{

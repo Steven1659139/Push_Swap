@@ -62,6 +62,8 @@ int	check_char(char **input, int j)
 	i = 0;
 	neg = 0;
 	nb_word = count_word(*input, ' ');
+	if (nb_word < 1)
+		exit(0);
 	while (i < (int)ft_strlen(input[j]))
 	{
 		if ((!ft_isdigit(input[j][i]) \

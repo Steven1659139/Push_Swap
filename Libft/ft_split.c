@@ -45,6 +45,8 @@ int	count_word(const char *str, char c)
 
 	i = 0;
 	trigger = 0;
+	while (*str == c)
+		str++;
 	while (*str)
 	{
 		if (*str != c && trigger == 0)
