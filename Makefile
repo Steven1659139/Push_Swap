@@ -45,7 +45,7 @@ push:
 	git push origin master
 	git push intra master
 
-bonus:$(BONUS_NAME)
+bonus:$(BONUS_NAME) all
 
 $(BONUS_NAME): $(OBJS) $(BONUS_OBJS)
 	@$(MAKE) -rmC ./Libft
