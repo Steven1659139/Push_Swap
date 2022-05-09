@@ -34,7 +34,7 @@ void	filter_push(t_stacks *container, char c)
 	else if (c == 'b')
 		pb(container);
 	else
-		yo_its_wrong();
+		yo_its_wrong("Erreur push.\n");
 }
 
 void	filter_swap(t_stacks *container, char c)
@@ -46,7 +46,7 @@ void	filter_swap(t_stacks *container, char c)
 	else if (c == 's')
 		ss(container);
 	else
-		yo_its_wrong();
+		yo_its_wrong("Erreur swap.\n");
 }
 
 void	filter_rotate(t_stacks *container, char c)
@@ -58,7 +58,7 @@ void	filter_rotate(t_stacks *container, char c)
 	else if (c == 'r')
 		rotate(container, c);
 	else
-		yo_its_wrong();
+		yo_its_wrong("Erreur rotate.\n");
 }
 
 void	filter_reverse_rotate(t_stacks *container, char c)
@@ -70,5 +70,5 @@ void	filter_reverse_rotate(t_stacks *container, char c)
 	else if (c == 'r')
 		reverse_rotate(container, c);
 	else
-		yo_its_wrong();
+		yo_its_wrong("Erreur reverse_rotate.\n");
 }

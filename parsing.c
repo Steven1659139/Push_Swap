@@ -68,13 +68,13 @@ int	check_char(char **input, int j)
 	{
 		if ((!ft_isdigit(input[j][i]) \
 				&& !(' ' == input[j][i]) && !(input[j][i] == '-') && !(input[j][i] == '\t')))
-			yo_its_wrong();
+			yo_its_wrong("Les entrées doivent être des chiffres.\n");
 		if (ft_isdigit(input[j][i]))
 			nb++;
 		if (input[j][i] == '-')
 			neg++;
 		if (nb_word < neg || (!ft_isdigit(input[j][i + 1]) && input[j][i] == '-'))
-			yo_its_wrong();
+			yo_its_wrong("Trop de '-'\n");
 		i++;
 	}
 	return (nb);

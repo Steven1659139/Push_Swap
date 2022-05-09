@@ -15,13 +15,9 @@
 void	ft_lstclear(t_dlist **lst, void (*del) (void *))
 {
 	t_dlist	*elem;
-	int i;
-
-	// if (!lst)
-	// 	return ;
+	int		i;
 
 	i = ft_lstsize(*lst);
-
 	while (i != 0)
 	{
 		elem = (*lst)->next;
@@ -29,5 +25,4 @@ void	ft_lstclear(t_dlist **lst, void (*del) (void *))
 		*lst = elem;
 		i--;
 	}
-	
 }

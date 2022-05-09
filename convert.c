@@ -18,7 +18,6 @@ void	table_flip(char **tab)
 	int i;
 
 	i = -1;
-
 	while (tab[++i])
 		free(tab[i]);
 	free(tab);
@@ -66,7 +65,7 @@ void	convert_sep(t_stacks *container, char **argv)
 		if (!int_checker(inter))
 			yo_its_wrong("Les nombres doivent tenir dans un int.\n");
 		if (ft_strchr(argv[i], ' '))
-			yo_its_wrong();
+			yo_its_wrong("Que des espaces");
 		lstadd(&stack_a, lstnew_dbl(inter));
 		i++;
 		container->size_a += 1;

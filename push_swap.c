@@ -24,19 +24,11 @@ int	main(int argc, char **argv)
 	{
 		{
 			if (argc == 2)
-			{
 				convert(container, *argv);
-				//ft_lstprint(container->a_head);
-				algo(container);
-			}
 			else
-			{
 				convert_sep(container, argv);
-				//ft_lstprint(container->a_head);
-				algo(container);
-			}
-			//ft_lstprint(container->a_head);
 		}
+		algo(container);
 	}
 	ft_lstclear(&(container->a_head), &free);
 	free(container);
