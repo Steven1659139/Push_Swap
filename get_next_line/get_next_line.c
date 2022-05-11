@@ -9,15 +9,32 @@
 /*   Updated: 2022/05/09 16:10:32 by slavoie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
-#include <stdlib.h>
-#include <stdio.h>
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	index;
+
+	index = 0;
+	while (str[index])
+		index++;
+	return (index);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
 
 static void	ft_read(int fd, char *buf, char **statique)
 {
-	int nb_bytes;
+	int		nb_bytes;
 	char	*tmp;
-	if(!*statique || !ft_strchr(*statique, '\n'))
+
+	if (!*statique || !ft_strchr(*statique, '\n'))
 	{	
 		nb_bytes = read(fd, buf, BUFFER_SIZE);
 		while (nb_bytes > 0)
@@ -40,10 +57,10 @@ static void	ft_read(int fd, char *buf, char **statique)
 
 static char	*ft_retline(char **statique)
 {
-	int	len;
-	int	until_n;
+	int		len;
+	int		until_n;
 	char	*ret;
-	char 	*tmp;
+	char	*tmp;
 
 	if (!*statique)
 	{
@@ -69,17 +86,14 @@ static char	*ft_retline(char **statique)
 
 char	*get_next_line(int fd)
 {
-	char	buf[BUFFER_SIZE + 1];
+	char		buf[BUFFER_SIZE + 1];
 	static char	*statique;
 
-	if (BUFFER_SIZE < 1 || fd == -1 || read(fd,buf,0) == -1)
-	{
-		return(0);
-	}
+	if (BUFFER_SIZE < 1 || fd == -1 || read(fd, buf, 0) == -1)
+		return (0);
 	ft_read(fd, buf, &statique);
-	return (ft_retline(&statique));	
+	return (ft_retline(&statique));
 }
-
 /*int main()
 {
     ssize_t fd;
@@ -98,4 +112,3 @@ char	*get_next_line(int fd)
     close(fd);
     return (0);
 }*/ 
-

@@ -34,16 +34,16 @@ fclean: clean
 	@rm -rf $(BONUS_NAME)
 
 add:
-	git add *.c
-	git add *.h
-	git add Makefile
-	git add Libft
-	git add get_next_line
-	git status
+	@git add *.c
+	@git add *.h
+	@git add Makefile
+	@git add Libft
+	@git add get_next_line
+	@git status
 
 push:
-	git push origin master
-	git push intra master
+	@git push origin master
+	@git push intra master
 
 bonus:$(BONUS_NAME) all
 

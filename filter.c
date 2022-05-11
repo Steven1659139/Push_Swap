@@ -12,63 +12,67 @@
 
 #include"Push_swap.h"
 
-void	put_move(t_stacks *container, char *move)
+void	put_move(t_stacks *container, char *move, int print)
 {
-	if (*move == 's')
-		filter_swap(container, *(++move));
+	if (*move != 's' && *move != 'r' && *move != 'p')
+		yo_its_wrong("Error\n");
+	else if (*move == 's' && ft_strlen(move) == 2)
+		filter_swap(container, *(++move), print);
 	else if (*move == 'p')
-		filter_push(container, *(++move));
-	else if (ft_strlen(move) == 2)
-		rotate(container, *(++move));
-	else if (ft_strlen(move) == 3)
+		filter_push(container, *(++move), print);
+	else if (*move == 'r' && ft_strlen(move) == 2)
+		filter_rotate(container, *(++move), print);
+	else if (*move == 'r' && ft_strlen(move) == 3)
 	{
 		move++;
-		reverse_rotate(container, *(++move));
+		filter_reverse_rotate(container, *(++move), print);
 	}
+	else
+		yo_its_wrong("Error\n");
 }
 
-void	filter_push(t_stacks *container, char c)
+void	filter_push(t_stacks *container, char c, int print)
 {
 	if (c == 'a')
-		pa(container);
+		pa(container, print);
 	else if (c == 'b')
-		pb(container);
+		pb(container, print);
 	else
 		yo_its_wrong("Erreur push.\n");
 }
 
-void	filter_swap(t_stacks *container, char c)
+void	filter_swap(t_stacks *container, char c, int print)
 {
 	if (c == 'a')
-		sa(container);
+		sa(container, print);
 	else if (c == 'b')
-		sb(container);
+		sb(container, print);
 	else if (c == 's')
-		ss(container);
+		ss(container, print);
 	else
 		yo_its_wrong("Erreur swap.\n");
 }
 
-void	filter_rotate(t_stacks *container, char c)
+void	filter_rotate(t_stacks *container, char c, int print)
 {
 	if (c == 'a')
-		rotate(container, c);
+		rotate(container, c, print);
 	else if (c == 'b')
-		rotate(container, c);
+		rotate(container, c, print);
 	else if (c == 'r')
-		rotate(container, c);
+		rotate(container, c, print);
 	else
 		yo_its_wrong("Erreur rotate.\n");
 }
 
-void	filter_reverse_rotate(t_stacks *container, char c)
+void	filter_reverse_rotate(t_stacks *container, char c, int print)
 {
 	if (c == 'a')
-		reverse_rotate(container, c);
+		reverse_rotate(container, c, print);
 	else if (c == 'b')
-		reverse_rotate(container, c);
+		reverse_rotate(container, c, print);
 	else if (c == 'r')
-		reverse_rotate(container, c);
+		reverse_rotate(container, c, print);
 	else
 		yo_its_wrong("Erreur reverse_rotate.\n");
 }

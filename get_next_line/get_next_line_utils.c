@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "get_next_line.h"
+#include "get_next_line.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 {
@@ -51,23 +51,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dst_size)
 	while (*src++)
 		index++;
 	return (index);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	index;
-
-	index = 0;
-	while (str[index])
-		index++;
-	return (index);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
 }
 
 char	*ft_strchr(const char *s, int c)

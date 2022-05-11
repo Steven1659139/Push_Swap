@@ -29,6 +29,8 @@ void	check_move(t_stacks *container, char **argv, int argc)
 {
 	char	*move;
 
+	if (argc == 1)
+		exit(0);
 	if (argc > 1 && check_input(++argv))
 	{
 		{
@@ -41,7 +43,7 @@ void	check_move(t_stacks *container, char **argv, int argc)
 				move = read_move(0);
 				if (!move)
 					break ;
-				put_move(container, move);
+				put_move(container, move, 0);
 				free(move);
 			}
 			free(move);

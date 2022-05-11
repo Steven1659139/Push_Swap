@@ -12,7 +12,7 @@
 
 #include "Push_swap.h"
 
-void	pb(t_stacks *container)
+void	pb(t_stacks *container, int print)
 {
 	if (container->size_a > 0)
 	{
@@ -31,11 +31,12 @@ void	pb(t_stacks *container)
 			container->a_head = container->temp;
 		}
 		update_stack_b(container);
-		ft_putstr_fd("pb\n", 1);
+		if (print == 1)
+			ft_putstr_fd("pb\n", 1);
 	}
 }
 
-void	pa(t_stacks *container)
+void	pa(t_stacks *container, int print)
 {
 	if (container->size_b > 0)
 	{
@@ -55,7 +56,8 @@ void	pa(t_stacks *container)
 			container->temp = container->b_head->next;
 		}
 		update_stack_a(container);
-		ft_putstr_fd("pa\n", 1);
+		if (print == 1)
+			ft_putstr_fd("pa\n", 1);
 	}
 }
 

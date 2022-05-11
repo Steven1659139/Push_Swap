@@ -34,7 +34,7 @@ int		check_input(char **input);
 void	ft_lstprint(t_dlist *first);
 void	convert(t_stacks *container, char *argv);
 void	convert_sep(t_stacks *container, char **argv);
-int		check_char(char **input, int j);
+void	check_char(char **input, int j);
 void	table_flip(char **tab);
 // Fonction de double link liste
 
@@ -45,18 +45,18 @@ void	lstadd(t_dlist **first, t_dlist *new);
 size_t	ft_lstlen(t_dlist **first);
 // move
 
-void	rotate(t_stacks *container, char stack);
-void	pb(t_stacks *container);
-void	pa(t_stacks *container);
-void	sa(t_stacks *container);
-void	sb(t_stacks *container);
-void	ss(t_stacks *container);
-void	reverse_rotate(t_stacks *container, char stack);
-void	put_move(t_stacks *container, char *move);
-void	filter_push(t_stacks *container, char c);
-void	filter_swap(t_stacks *container, char c);
-void	filter_reverse_rotate(t_stacks *container, char c);
-void	filter_rotate(t_stacks *container, char c);
+void	rotate(t_stacks *container, char stack, int print);
+void	pb(t_stacks *container, int print);
+void	pa(t_stacks *container, int print);
+void	sa(t_stacks *container, int print);
+void	sb(t_stacks *container, int print);
+void	ss(t_stacks *container, int print);
+void	reverse_rotate(t_stacks *container, char stack, int print);
+void	put_move(t_stacks *container, char *move, int print);
+void	filter_push(t_stacks *container, char c, int print);
+void	filter_swap(t_stacks *container, char c, int print);
+void	filter_reverse_rotate(t_stacks *container, char c, int print);
+void	filter_rotate(t_stacks *container, char c, int print);
 void	first_call_a(t_stacks *container);
 void	first_call_b(t_stacks *container);
 // sort

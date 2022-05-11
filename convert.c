@@ -12,10 +12,9 @@
 
 #include "Push_swap.h"
 
-
 void	table_flip(char **tab)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (tab[++i])

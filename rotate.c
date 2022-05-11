@@ -12,27 +12,30 @@
 
 #include "Push_swap.h"
 
-void	rotate(t_stacks *container, char stack)
+void	rotate(t_stacks *container, char stack, int print)
 {
-	if (stack == 'c')
+	if (stack == 'r')
 	{
 		if (container->a_head)
 			container->a_head = container->a_head->next;
 		if (container->b_head)
 			container->b_head = container->b_head->next;
 		container->nb_move += 1;
-		ft_putstr_fd("rr\n", 1);
+		if (print == 1)
+			ft_putstr_fd("rr\n", 1);
 	}
 	else if (stack == 'a' && container->a_head)
 	{
 		container->a_head = container->a_head->next;
 		container->nb_move += 1;
-		ft_putstr_fd("ra\n", 1);
+		if (print == 1)
+			ft_putstr_fd("ra\n", 1);
 	}
 	else if (stack == 'b' && container->b_head)
 	{
 		container->b_head = container->b_head->next;
 		container->nb_move += 1;
-		ft_putstr_fd("rb\n", 1);
+		if (print == 1)
+			ft_putstr_fd("rb\n", 1);
 	}
 }

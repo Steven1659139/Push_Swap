@@ -17,6 +17,8 @@ int	check_sort(t_stacks *cont, int nb)
 	int	i;
 
 	i = 1;
+	if (!cont->a_head && cont->b_head)
+		return (0);
 	cont->temp = cont->a_head;
 	while (cont->temp->next != cont->a_head)
 	{
@@ -42,11 +44,11 @@ void	sort3(t_stacks *cont)
 		mid = cont->a_head->next->content;
 		bottom = cont->a_head->prev->content;
 		if (((top > mid) && (top < bottom)) || ((top < mid) && (top < bottom)))
-			put_move(cont, "sa");
+			put_move(cont, "sa", 1);
 		else if ((top < mid) && (top > bottom))
-			put_move(cont, "rra");
+			put_move(cont, "rra", 1);
 		else if ((top > mid) && (top > bottom))
-			put_move(cont, "ra");
+			put_move(cont, "ra", 1);
 	}
 }
 
@@ -60,11 +62,11 @@ void	sort5(t_stacks *cont)
 		{
 			min = find_min(cont, 'a');
 			on_top(cont, min, 'a');
-			pb(cont);
+			pb(cont, 1);
 		}
 		sort3(cont);
 		while (cont->size_a < cont->size_max)
-			pa(cont);
+			pa(cont, 1);
 	}
 }
 
@@ -81,14 +83,14 @@ void	universal_sort(t_stacks *cont)
 	while (cont->size_a > 0)
 	{
 		if ((cont->a_head->index >= min_chk && cont->a_head->index <= max_chk))
-			put_move(cont, "pb");
+			put_move(cont, "pb", 1);
 		if (!(check_chunk(max_chk, min_chk, cont)))
 		{
 			min_chk -= chunk;
 			max_chk += chunk;
 		}
 		if (get_top(cont->b_head) < cont->size_max / 2)
-			put_move(cont, "rb");
+			put_move(cont, "rb", 1);
 		node = find_node(cont, min_chk, max_chk, 'a');
 		on_top(cont, node, 'a');
 	}
@@ -105,11 +107,11 @@ void	ah_shit_here_we_go_again(t_stacks *cont)
 		min = get_min(cont, 'a');
 		node = find_max(cont, 'b');
 		on_top(cont, node, 'b');
-		put_move(cont, "pa");
+		put_move(cont, "pa", 1);
 		if (cont->a_head)
 		{
 			if (cont->a_head->index > cont->a_head->next->index)
-				put_move(cont, "sa");
+				put_move(cont, "sa", 1);
 		}
 	}
 }

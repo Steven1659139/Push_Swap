@@ -23,6 +23,22 @@ void	algo(t_stacks *container)
 	}
 }
 
+void	on_top_b(t_stacks *container, t_dlist *node)
+{
+	int	size;
+
+	size = container->size_b;
+	while (container->b_head != node)
+	{
+		update_position(container);
+		replace(container);
+		if (node->position > (size / 2))
+			put_move(container, "rrb", 1);
+		else
+			put_move(container, "rb", 1);
+	}
+}
+
 void	on_top(t_stacks *container, t_dlist *node, char stack)
 {
 	int	size;
@@ -36,24 +52,13 @@ void	on_top(t_stacks *container, t_dlist *node, char stack)
 		{
 			update_position(container);
 			if (node->position > (size / 2))
-				put_move(container, "rra");
+				put_move(container, "rra", 1);
 			else
-				put_move(container, "ra");
+				put_move(container, "ra", 1);
 		}
 	}
 	else
-	{
-		size = container->size_b;
-		while (container->b_head != node)
-		{
-			update_position(container);
-			replace(container);
-			if (node->position > (size / 2))
-				put_move(container, "rrb");
-			else
-				put_move(container, "rb");
-		}
-	}
+		on_top_b(container, node);
 }
 
 void	replace(t_stacks *container)
@@ -63,9 +68,9 @@ void	replace(t_stacks *container)
 	node = container->a_head;
 	if (container->a_head)
 	{
-		if (container->a_head->index > container->a_head->next->index )
-			put_move(container, "sa");
+		if (container->a_head->index > container->a_head->next->index)
+			put_move(container, "sa", 1);
 	}
-	if (container->b_head->index == get_max(container,'b') - 1)
-		put_move(container, "pa");
+	if (container->b_head->index == get_max(container, 'b') - 1)
+		put_move(container, "pa", 1);
 }

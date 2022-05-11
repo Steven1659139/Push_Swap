@@ -12,12 +12,12 @@
 
 #include "Push_swap.h"
 
-void	sa(t_stacks *container)
+void	sa(t_stacks *container, int print)
 {
 	if (container->size_a > 0)
 	{
 		if (container->size_a == 2)
-			put_move(container, "ra");
+			put_move(container, "ra", print);
 		else
 		{
 			container->temp = container->a_head->next->next;
@@ -29,17 +29,18 @@ void	sa(t_stacks *container)
 			container->temp->prev = container->a_head;
 			container->a_head = container->a_head->prev;
 			container->nb_move += 1;
-			ft_putstr_fd("sa\n", 1);
+			if (print == 1)
+				ft_putstr_fd("sa\n", 1);
 		}
 	}
 }
 
-void	sb(t_stacks *container)
+void	sb(t_stacks *container, int print)
 {
 	if (container->size_b > 0)
 	{
 		if (container->size_b == 2)
-			rotate(container, 'b');
+			rotate(container, 'b', print);
 		else
 		{
 			container->temp = container->b_head->next->next;
@@ -51,15 +52,17 @@ void	sb(t_stacks *container)
 			container->temp->prev = container->b_head;
 			container->b_head = container->b_head->prev;
 			container->nb_move += 1;
-			ft_putstr_fd("sb\n", 1);
+			if (print == 1)
+				ft_putstr_fd("sb\n", 1);
 		}
 	}
 }
 
-void	ss(t_stacks *container)
+void	ss(t_stacks *container, int print)
 {
-	sa(container);
-	sb(container);
-	ft_putstr_fd("ss\n", 1);
+	sa(container, 0);
+	sb(container, 0);
+	if (print == 1)
+		ft_putstr_fd("ss\n", 1);
 	container->nb_move += 1;
 }
