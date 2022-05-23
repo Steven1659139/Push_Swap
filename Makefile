@@ -43,7 +43,6 @@ add:
 
 push:
 	@git push origin master
-	@git push intra master
 
 bonus:$(BONUS_NAME) all
 
