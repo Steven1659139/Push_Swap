@@ -64,5 +64,5 @@ void	ss(t_stacks *container, int print)
 	sb(container, 0);
 	if (print == 1)
 		ft_putstr_fd("ss\n", 1);
-	container->nb_move += 1;
+	container->nb_move -= 1;
 }

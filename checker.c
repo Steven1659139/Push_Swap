@@ -11,6 +11,41 @@
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "Push_swap.h"
+
+void	ft_print_list(t_stacks *stack)
+{
+	int i;
+	t_dlist *stack_a;
+	t_dlist *stack_b;
+
+	i = 0;
+
+	stack_a = stack->a_head;
+	stack_b = stack->b_head;
+
+	printf("A	|	B\n-----------------\n");
+	while (i < stack->size_max)
+	{
+		if (stack_a && i < stack->size_a)
+		{
+			printf("%d	|	", stack_a->content);
+			stack_a = stack_a->next;
+		}
+		else
+			printf("	|	");
+		if (stack_b && i < stack->size_b)
+		{
+			printf("%d\n", stack_b->content);
+			stack_b = stack_b->next;
+		}
+		else
+			printf("\n");
+		i++;
+	}
+	printf("Nombre de coup: %d\n", stack->nb_move);
+}
+
 
 char	*read_move(int fd)
 {
@@ -38,6 +73,8 @@ void	check_move(t_stacks *container, char **argv, int argc)
 				convert(container, *argv);
 			else
 				convert_sep(container, argv);
+
+			ft_print_list(container);
 			while (1)
 			{
 				move = read_move(0);
@@ -45,6 +82,7 @@ void	check_move(t_stacks *container, char **argv, int argc)
 					break ;
 				put_move(container, move, 0);
 				free(move);
+				ft_print_list(container);
 			}
 			free(move);
 		}
