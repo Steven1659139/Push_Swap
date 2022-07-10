@@ -100,11 +100,9 @@ t_dlist	*find_node(t_stacks *container, int min, int max, char stack)
 
 t_dlist	*find_node_bottom(t_stacks *container, int min, int max, char stack)
 {
-	int		i;
 	t_dlist	*end;
 	t_dlist	*node;
 
-	i = 1;
 	if (stack == 'a')
 	{
 		end = container->a_head;

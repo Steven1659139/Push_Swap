@@ -63,9 +63,7 @@ void	on_top(t_stacks *container, t_dlist *node, char stack)
 
 void	replace(t_stacks *container)
 {
-	t_dlist	*node;
 
-	node = container->a_head;
 	if (container->a_head)
 	{
 		if (container->a_head->index > container->a_head->next->index)

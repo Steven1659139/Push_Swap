@@ -99,12 +99,10 @@ void	universal_sort(t_stacks *cont)
 
 void	ah_shit_here_we_go_again(t_stacks *cont)
 {
-	int		min;
 	t_dlist	*node;
 
 	while (cont->size_b > 0)
 	{
-		min = get_min(cont, 'a');
 		node = find_max(cont, 'b');
 		on_top(cont, node, 'b');
 		put_move(cont, "pa", 1);

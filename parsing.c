@@ -42,9 +42,7 @@ int	twin_checker(t_dlist **lst)
 int	check_input(char **input)
 {
 	int	j;
-	int	nb;
 
-	nb = 0;
 	j = 0;
 	while (input[j] != NULL)
 		check_char(input, j++);
